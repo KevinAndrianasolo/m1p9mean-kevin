@@ -2,7 +2,6 @@ let DBUtils = require('../utils/DBUtils');
 var ObjectId = require('mongodb').ObjectId; 
 
 let findAll = async function(model){
-    console.log(model);
     let db = await DBUtils.connect();
     let collection = db.collection(model);
     let res = await collection.find().toArray();
@@ -20,7 +19,7 @@ let save = async function(model, object){
     let db = await DBUtils.connect();
     let collection = db.collection(model);
     let res = await collection.insertOne(object);
-    return res;
+    return res.insertedId;
 };
 let update = async function(model, id, object){
     let db = await DBUtils.connect();
@@ -37,7 +36,7 @@ let deleteById = async function(model, id){
     let db = await DBUtils.connect();
     let collection = db.collection(model);
     
-    let res = await collection.remove({
+    let res = await collection.deleteOne({
         _id : new ObjectId(id)
     });
     return res;

@@ -1,0 +1,14 @@
+USER :
+{
+    "_id": "623c55a438be7c619737b1b7",
+    "profileId" : "623c549d38be7c619737b1b2",
+    "username" : "restaurant",
+    "password" : "123456"
+}
+
+PROFILE : 
+{
+    "_id": "623c54b038be7c619737b1b3",
+    "name": "delivery-man",
+    "label": "Livreur"
+}
