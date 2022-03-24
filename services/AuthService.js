@@ -11,10 +11,11 @@ let login = async function(user){
         username : user.username,
         password : user.password
     });
-
+    console.log(res);
     if(res==null) throw new Error("Account does not exists.");
 
     let userTokenId = await saveUserToken(res['_id']);
+    console.log(userTokenId);
     return userTokenId;
 };
 
@@ -23,7 +24,7 @@ let saveUserToken = async function(userId){
         userId : userId,
         expirationDate : null
     });
-    return res['insertedId'];
+    return res;
 };
 
 let findUserIdWithUserTokenId = async function(userTokenId){
