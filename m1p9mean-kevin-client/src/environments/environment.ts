@@ -7,7 +7,6 @@ export const environment = {
 };
 
 export const BASE_URL = "http://localhost:3000";
-//export const BASE_URL = "https://m1p9mean-kevin.herokuapp.com/";
 
 /*
  * For easier debugging in development mode, you can import the following file
