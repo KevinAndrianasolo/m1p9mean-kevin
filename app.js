@@ -18,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'm1p9mean-kevin-client/dist/m1p9mean-kevin-client')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
