@@ -20,3 +20,6 @@ ng new m1p9mean-kevin-client
 
 ## Build Client App :
 ng build
+
+## Setup database : MongoDB
+npm install mongodb --save
