@@ -1,4 +1,4 @@
-let DBUtils = require('./DBUtils');
+let DBUtils = require('../utils/DBUtils');
 var ObjectId = require('mongodb').ObjectId; 
 
 let findAll = async function(model){
