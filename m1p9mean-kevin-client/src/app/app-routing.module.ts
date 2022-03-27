@@ -15,8 +15,8 @@ const routes: Routes = [
   },
   {
     path: "client",
-    loadChildren: () => import('./profiles/client/client.module').then(m => m.ClientModule),
-    canActivate: [AuthGuardService]
+    loadChildren: () => import('./profiles/client/client.module').then(m => m.ClientModule)
+    
   },
   {
     path: "restaurant",

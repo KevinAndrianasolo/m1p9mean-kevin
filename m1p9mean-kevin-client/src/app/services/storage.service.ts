@@ -7,7 +7,8 @@ export class StorageService {
 
   constructor() { }
   public getProfile(){
-    return JSON.parse( localStorage['profile']);
+    if(!localStorage['profile'] ) return null;
+    return JSON.parse( localStorage['profile'] );
   }
   public setProfile(profile : any){
     localStorage['profile'] = JSON.stringify(profile);
