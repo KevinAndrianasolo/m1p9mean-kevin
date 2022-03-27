@@ -1,8 +1,7 @@
 class Collections{
     static USER = "user";
     static USER_TOKEN = "userToken";
-
-    static PRODUCT = "product";
+    static PROFILE = "profile";
 
 };
 module.exports = Collections;

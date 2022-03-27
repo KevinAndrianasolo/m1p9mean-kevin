@@ -5,6 +5,18 @@ var appDir = path.resolve(__dirname, '..');
 var AuthService = require(path.resolve(appDir, 'services/AuthService'));
 var ResponseBuilder = require(path.resolve(appDir, 'utils/ResponseBuilder'));
 
+router.post('/check', async function(req, res, next) {
+  try{
+    let authObj = req.body;
+    let tmp = await AuthService.check(authObj);
+    let response = ResponseBuilder.success(200, `Authorization checked`, tmp);
+    res.send(response);
+  }
+  catch(e){
+    res.send(ResponseBuilder.error(500, e.message));
+  }
+  
+});
 
 router.post('/login', async function(req, res, next) {
   try{

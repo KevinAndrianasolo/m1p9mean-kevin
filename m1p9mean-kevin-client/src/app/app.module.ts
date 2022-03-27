@@ -8,9 +8,9 @@ import { RestaurantComponent } from './profiles/restaurant/restaurant.component'
 import { DeliveryManComponent } from './profiles/delivery-man/delivery-man.component';
 import { EKalyComponent } from './profiles/e-kaly/e-kaly.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ClientRoutingModule } from './profiles/client/client-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,14 +18,14 @@ import { HttpClientModule } from '@angular/common/http';
     RestaurantComponent,
     DeliveryManComponent,
     EKalyComponent,
-    LoginComponent,
-    SignupComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ClientRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

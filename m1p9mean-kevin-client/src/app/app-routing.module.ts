@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
-import { ClientComponent } from './profiles/client/client.component';
-import { DeliveryManComponent } from './profiles/delivery-man/delivery-man.component';
-import { EKalyComponent } from './profiles/e-kaly/e-kaly.component';
-import { RestaurantComponent } from './profiles/restaurant/restaurant.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -18,24 +14,24 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: "signup",
-    component: SignupComponent
-  },
-  {
     path: "client",
-    component: ClientComponent
+    loadChildren: () => import('./profiles/client/client.module').then(m => m.ClientModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: "restaurant",
-    component: RestaurantComponent
+    loadChildren: () => import('./profiles/restaurant/restaurant.module').then(m => m.RestaurantModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: "delivery-man",
-    component: DeliveryManComponent
+    loadChildren: () => import('./profiles/delivery-man/delivery-man.module').then(m => m.DeliveryManModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: "e-kaly",
-    component: EKalyComponent
+    loadChildren: () => import('./profiles/e-kaly/e-kaly.module').then(m => m.EKalyModule),
+    canActivate: [AuthGuardService]
   }
 ];
 

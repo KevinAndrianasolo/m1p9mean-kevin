@@ -19,20 +19,44 @@ npm run dev
 ## Setup Front-end : Angular
 ng new m1p9mean-kevin-client
 
-ng generate component profiles/client
-ng generate component profiles/restaurant
-ng generate component profiles/delivery-man
-ng generate component profiles/e-kaly
-
+### Public pages :
 ng generate component pages/login
-ng generate component pages/signup
 ng generate module pages/login
-ng generate module pages/signup
+
+### Client profile :
+ng generate component profiles/client
+ng generate module profiles/client --routing
+ng generate component profiles/client/signup
+ng generate module profiles/client/signup
+ng generate component profiles/client/home
+ng generate module profiles/client/home
+
+### Restaurant profile :
+ng generate component profiles/restaurant
+ng generate module profiles/restaurant --routing
+ng generate component profiles/restaurant/home
+ng generate module profiles/restaurant/home
+
+### Delivery man profile :
+ng generate component profiles/delivery-man
+ng generate module profiles/delivery-man --routing
+
+
+### E-Kaly profile :
+ng generate component profiles/e-kaly
+ng generate module profiles/e-kaly --routing
+ng generate component profiles/e-kaly/home
+ng generate module profiles/e-kaly/home
+
+
+
+
 
 ng generate service services/auth
 ng generate service services/base
 ng generate service services/storage
 ng generate service services/popup
+ng generate service services/AuthGuard
 
 npm install sweetalert2
 

@@ -6,18 +6,26 @@ import { Injectable } from '@angular/core';
 export class StorageService {
 
   constructor() { }
+  public getProfile(){
+    return JSON.parse( localStorage['profile']);
+  }
+  public setProfile(profile : any){
+    localStorage['profile'] = JSON.stringify(profile);
+  }
+
   public getAccountToken(){
-    let token = localStorage['account_token']==undefined ? "" : localStorage['account_token'];
+    let token = localStorage['userTokenId']==undefined ? "" : localStorage['userTokenId'];
     return token;
   }
   public setAccountToken(token : string){
-    localStorage['account_token'] = token;
+    localStorage['userTokenId'] = token;
   }
+
   public clearAccountToken(){
-    localStorage.removeItem('account_token');
+    localStorage.removeItem('userTokenId');
   }
   public isAuthentificated() : boolean{
-    return localStorage['account_token']!=undefined && localStorage['account_token']!="";
+    return localStorage['userTokenId']!=undefined && localStorage['userTokenId']!="";
   }
   public clear(){
     localStorage.clear();

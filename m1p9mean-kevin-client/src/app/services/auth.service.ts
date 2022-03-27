@@ -15,4 +15,27 @@ export class AuthService {
     let url = `${this.baseService._base_url}/auth/login`;
     return this.http.post(url, user, { headers : headers } );
   }
+  public checkAuth(userTokenId : string, profileId : string){
+    let headers = this.baseService.getHeaderInstance()
+    let url = `${this.baseService._base_url}/auth/check`;
+    let obj = {
+      userTokenId : userTokenId,
+      profileId : profileId
+    };
+    return this.http.post(url, obj, { headers : headers } );
+  }
+
+  async isAuthentificated(){
+    let userTokenId = this.baseService.storageService.getAccountToken();
+    let profile = this.baseService.storageService.getProfile();
+    if(!userTokenId || !profile) return false;
+
+    let res : any = await this.checkAuth(userTokenId, profile['_id']).toPromise();
+    if(res['META']['status'] == "200"){
+      let isOk = res['DATA'];
+      return isOk;
+    }
+    return false;
+  }
+
 }

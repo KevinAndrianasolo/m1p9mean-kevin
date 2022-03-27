@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private popupService : PopupService, private storageService : StorageService, private authService : AuthService, private router : Router) { }
 
   ngOnInit(): void {
+    this.storageService.clear();
   }
 
   public async login(loginForm : NgForm){
@@ -23,9 +24,14 @@ export class LoginComponent implements OnInit {
       this.onLoading = true;
       let res : any = await this.authService.login(user).toPromise();
       if(res['META']['status'] == "200"){
-        let token = res['DATA'];
-        this.storageService.setAccountToken(token);
-        this.router.navigateByUrl('/client');
+        let tmp = res['DATA'];
+        let userTokenId = tmp.userTokenId;
+        let profile = tmp.profile;
+
+        this.storageService.setAccountToken(userTokenId);
+        this.storageService.setProfile(profile);
+
+        this.router.navigateByUrl(`/${profile['name']}`);
       }
       else{
         throw new Error(res['META']['message']);
