@@ -30,6 +30,8 @@ ng generate component profiles/client/signup
 ng generate module profiles/client/signup
 ng generate component profiles/client/home
 ng generate module profiles/client/home
+ng generate component profiles/client/restaurants
+ng generate module profiles/client/restaurants
 
 ### Restaurant profile :
 ng generate component profiles/restaurant
@@ -48,7 +50,12 @@ ng generate module profiles/e-kaly --routing
 ng generate component profiles/e-kaly/home
 ng generate module profiles/e-kaly/home
 
+### Components :
+ng generate component components/header
+ng generate module components/header
 
+ng generate component components/footer
+ng generate module components/footer
 
 
 
@@ -59,6 +66,7 @@ ng generate service services/popup
 ng generate service services/AuthGuard
 
 npm install sweetalert2
+npm install --save @fortawesome/fontawesome-free
 
 ## Build Client App :
 ng build

@@ -1,0 +1,29 @@
+.footer{
+    background-color: var(--dark);
+    position : fixed;
+    bottom : 0px;
+    min-height : 100px;
+    width : 100%;
+    padding : 20px;
+    color : #fafafa;
+    display : grid;
+    grid-template-columns: auto 150px;
+    .footer-informations{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        .footer-informations-item{
+            font-weight: bolder;
+            font-size : 15px;
+        }
+    }
+    
+    .logo-wrap{
+        display : flex;
+        justify-content: center;
+        align-items: center;
+        .logo{
+            width : 100px;
+        }
+    }
+}
