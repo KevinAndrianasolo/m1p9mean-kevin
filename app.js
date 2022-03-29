@@ -38,13 +38,14 @@ app.use('/auth', authRouter);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// app.all('*', function(req, res) { 
-//   res.redirect('/'); 
+// app.use(function(req, res, next) {
+//   next(createError(404));
 // });
+
+app.all('*', function(req, res) {
+  let indexPath = path.resolve(__dirname, "m1p9mean-kevin-client/dist/m1p9mean-kevin-client/index.html");
+  res.sendFile(indexPath);
+});
 
 // error handler
 app.use(function(err, req, res, next) {
