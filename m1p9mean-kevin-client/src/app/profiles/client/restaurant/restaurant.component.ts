@@ -14,11 +14,13 @@ export class RestaurantComponent implements OnInit {
   public onLoading : boolean = false;
   public restaurant : any  =  {};
   public restaurantId : number = -1;
+  public menus : any [] = [];
   constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute) { }
 
   async ngOnInit() {
     this.restaurantId = this.activatedRoute.snapshot.params['restaurantId'];
     await this.InitRestaurant();
+    await this.InitMenus();
   }
 
   public async InitRestaurant(){
@@ -28,6 +30,26 @@ export class RestaurantComponent implements OnInit {
       if(res['META']['status'] == "200"){
         this.restaurant = res['DATA'];
         console.log(this.restaurant);
+      }
+      else{
+        throw new Error(res['META']['message']);
+      }     
+    }
+    catch(err : any){
+      this.popupService.showError(err.message);
+    }
+    finally{
+      this.onLoading = false;
+    }
+  }
+
+  public async InitMenus(){
+    try{
+      this.onLoading = true;
+      let res : any = await this.api.find(Collections.MENU, {restaurantId : this.restaurantId}).toPromise();
+      if(res['META']['status'] == "200"){
+        this.menus = res['DATA'];
+        console.log(this.menus);
       }
       else{
         throw new Error(res['META']['message']);

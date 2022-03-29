@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Collections } from 'src/app/classes/Collections';
+import { OrderState } from 'src/app/classes/OrderState';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PopupService } from 'src/app/services/popup/popup.service';
 
@@ -21,7 +22,7 @@ export class OrdersComponent implements OnInit {
   public async InitOrders(){
     try{
       this.onLoading = true;
-      let res : any = await this.api.findAll(Collections.ORDER).toPromise();
+      let res : any = await this.api.find(Collections.ORDER, {orderStateId:OrderState.READY}).toPromise();
       if(res['META']['status'] == "200"){
         this.orders = res['DATA'];
         console.log(this.orders);

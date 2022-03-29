@@ -5,6 +5,8 @@ db.createCollection("restaurant");
 db.createCollection("product");
 db.createCollection("order");
 db.createCollection("orderState");
+db.createCollection("restaurantEmployee");
+
 
 
 /*
@@ -76,6 +78,14 @@ db.restaurant.insertOne({
     "address" : "116 Rue De Rivoli, PARIS, - 75001"
 }); //6242a1782597694c914ff9e5
 
+/**
+ * RESTAURANT EMPLOYEE
+ */
+ db.restaurantEmployee.insertOne({
+    "restaurantId" : "6242a1502597694c914ff9e3",
+    "userId" : "623c55a438be7c619737b1b7"
+}); //6242ca742597694c914ff9ef
+
 /*
 * MENUS :
 */
@@ -117,6 +127,12 @@ db.menu.insertOne({
 db.orderState.insertOne({
     "label" : 'En cours'
 }); //6242a6c52597694c914ff9ea
+db.orderState.insertOne({
+    "label" : 'Prête à être livrée'
+}); //6242cddc2597694c914ff9f0
+db.orderState.insertOne({
+    "label" : 'Prise en charge par le livreur'
+}); //6242cdeb2597694c914ff9f1
 db.orderState.insertOne({
     "label" : 'Livrée et Payée'
 }); //6242a6cf2597694c914ff9eb
@@ -163,6 +179,18 @@ db.order.insertOne({
 
 
 
+
+db.menu.find({
+    restaurantId : "6242a1502597694c914ff9e3"
+});
+
+db.order.findOneAndUpdate({
+    _id : new ObjectId("6242a8762597694c914ff9ee")
+}, {
+    $set : {
+        "orderStateId" : "6242cddc2597694c914ff9f0"
+    }
+});
 
 
 db.order.findOneAndUpdate({
