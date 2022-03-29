@@ -14,26 +14,27 @@ import { ClientRoutingModule } from './profiles/client/client-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeModule } from './profiles/client/home/home.module';
+import { ClientModule } from './profiles/client/client.module';
+import { RestaurantModule } from './profiles/restaurant/restaurant.module';
+import { EKalyModule } from './profiles/e-kaly/e-kaly.module';
+import { DeliveryManModule } from './profiles/delivery-man/delivery-man.module';
 @NgModule({
   declarations: [
     AppComponent,
-    ClientComponent,
-    RestaurantComponent,
-    DeliveryManComponent,
-    EKalyComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ClientRoutingModule
+    ClientRoutingModule,
+    ClientModule,
+    RestaurantModule,
+    EKalyModule,
+    DeliveryManModule,
+
   ],
-  // exports: [
-  //   HeaderComponent,
-  //   FooterComponent
-  // ],
   schemas : [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]

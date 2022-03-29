@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { PopupService } from 'src/app/services/popup.service';
-import { StorageService } from 'src/app/services/storage.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { PopupService } from 'src/app/services/popup/popup.service';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-login',

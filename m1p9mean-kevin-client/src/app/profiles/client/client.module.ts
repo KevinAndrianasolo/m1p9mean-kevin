@@ -7,18 +7,30 @@ import { HomeComponent } from './home/home.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { MenuComponent } from './menu/menu.component';
+import { AppModule } from 'src/app/app.module';
+import { HeaderModule } from 'src/app/components/header/header.module';
+import { FooterModule } from 'src/app/components/footer/footer.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { ClientComponent } from './client.component';
 
 @NgModule({
   declarations: [
+    ClientComponent,
     SignupComponent,
     HomeComponent,
     RestaurantsComponent,
-    HeaderComponent,
-    FooterComponent
+    RestaurantComponent,
+    MenuComponent
   ],
+  schemas : [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
-    ClientRoutingModule
-  ]
+    ClientRoutingModule,
+    HeaderModule,
+    FooterModule
+  ],
+  exports : [ClientComponent]
 })
 export class ClientModule { }
