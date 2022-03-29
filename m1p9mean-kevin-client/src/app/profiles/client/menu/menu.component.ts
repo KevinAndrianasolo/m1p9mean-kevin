@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Collections } from 'src/app/classes/Collections';
 import { ApiService } from 'src/app/services/api/api.service';
+import { BasketService } from 'src/app/services/basket/basket.service';
 import { PopupService } from 'src/app/services/popup/popup.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class MenuComponent implements OnInit {
   public onLoading : boolean = false;
   public menu : any  =  {};
   public menuId : number = -1;
-  constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute) { }
+  public quantity : number = 0;
+  constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute, private basketService : BasketService, private router : Router) { }
 
   async ngOnInit() {
     this.menuId = this.activatedRoute.snapshot.params['menuId'];
@@ -38,5 +40,22 @@ export class MenuComponent implements OnInit {
     finally{
       this.onLoading = false;
     }
+  }
+
+  public decreaseQuantity(){
+    if(this.quantity>0) this.quantity --;
+  }
+  public increaseQuantity(){
+    this.quantity ++;
+  }
+
+  public addToBasket(){
+    this.basketService.addToBasket(this.menu.restaurantId, {
+      menuId : this.menu._id,
+      quantity : this.quantity,
+      cost : this.menu.unitPrice * this.quantity
+    });
+    this.popupService.showSuccess("Ajouté au panier");
+    this.router.navigateByUrl(`/client/restaurant/${this.menu.restaurantId}`);
   }
 }

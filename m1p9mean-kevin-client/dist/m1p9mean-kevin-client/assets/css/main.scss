@@ -1,0 +1,15 @@
+:root{
+    --font : "AdobeClean-Regular";
+    --theme : #FFD700; // GOLD
+    --black : #323232;
+    --black-light : #505050;
+    --dark : #1e2029;
+}
+
+*{
+    font-family: var(--font);
+    box-sizing: border-box;
+}
+body {
+    margin : 0px;
+}

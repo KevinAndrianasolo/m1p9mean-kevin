@@ -62,6 +62,7 @@ ng generate module profiles/e-kaly --routing
 ng generate component profiles/e-kaly/home
 ng generate module profiles/e-kaly/home
 ng generate component profiles/e-kaly/orders
+ng generate component profiles/e-kaly/order
 ng generate component profiles/e-kaly/profit
 ng generate component profiles/e-kaly/management
 ### Components :

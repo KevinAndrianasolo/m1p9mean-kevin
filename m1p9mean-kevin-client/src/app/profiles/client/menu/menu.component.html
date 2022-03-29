@@ -1,8 +1,23 @@
 <app-header></app-header>
 <div class="content">
     <h1 class="content-title">
-        <span>Menu : {{menuId}}</span>
+        <span>Menu : {{menu.name}}</span>
+        <span class="small">{{menu.description}}</span>
         <div class="separator"></div>
     </h1>
+    <div class="order-control-wrap">
+        <div class="order-control-btn" (click)="decreaseQuantity()">
+            <i class="fa fa-minus icon icon"></i>
+        </div>
+        <div class="order-control-value">
+          <span>{{quantity}}</span>
+        </div>
+        <div class="order-control-btn" (click)="increaseQuantity()">
+            <i class="fa fa-add icon icon"></i>
+        </div>
+      </div>
+    <div class="btn-wrap">
+        <div class="btn {{quantity==0 ? 'disabled' : ''}}" (click)="addToBasket()">Ajouter au panier</div>
+    </div>
 </div>
 <app-footer></app-footer>

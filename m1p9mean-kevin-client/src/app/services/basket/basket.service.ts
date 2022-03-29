@@ -13,7 +13,7 @@ export class BasketService {
     }
     return -1;
   }
-  public getBasketOf(restaurantId : number){
+  public getBasketOf(restaurantId : string){
     let basket : any []= this.storageService.getBasket();
     let iOrder = this.indexOf(basket, 'restaurantId', restaurantId);
     if(iOrder==-1) return null;
@@ -26,7 +26,7 @@ export class BasketService {
     }
     return total;
   }
-  public deleteFromBasket(restaurantId : number, iItem : number){
+  public deleteFromBasket(restaurantId : string, iItem : number){
     let basket : any []= this.storageService.getBasket();
     let iOrder = this.indexOf(basket, 'restaurantId', restaurantId);
     basket[iOrder].items.splice(iItem, 1);
@@ -34,7 +34,7 @@ export class BasketService {
     basket[iOrder].quantity = this.getTotal(basket[iOrder].items, 'quantity');
     this.storageService.setBasket(basket);
   }
-  public updateBasket(restaurantId : number, iItem : number, item : any){
+  public updateBasket(restaurantId : string, iItem : number, item : any){
     let basket : any []= this.storageService.getBasket();
     let iOrder = this.indexOf(basket, 'restaurantId', restaurantId);
     
@@ -44,12 +44,12 @@ export class BasketService {
     this.storageService.setBasket(basket);
   }
 
-  public addToBasket(restaurantId : number, item : never){
+  public addToBasket(restaurantId : string, item : any){
     if(!item) return;
     let basket : any []= this.storageService.getBasket();
     let iOrder = this.indexOf(basket, 'restaurantId', restaurantId);
     console.log(iOrder);
-    let order = {
+    let order : any = {
       restaurantId : restaurantId,
       items : [],
       cost : 0,
