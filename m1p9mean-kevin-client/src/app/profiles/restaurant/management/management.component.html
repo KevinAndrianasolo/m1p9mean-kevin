@@ -5,6 +5,41 @@
             <span>Gestion de mon restaurant</span>
             <div class="separator"></div>
         </h1>
+        <div class="filter-wrap">
+            <select class="select" (change)="search()" [(ngModel)]="visibility">
+                <option  class="select-options" value="">Tous les menus</option>
+                <option  class="select-options" value="true">Menus visibles</option>
+                <option  class="select-options" value="false">Menus cachés</option>
+                
+            </select>
+        </div>
+        <div class="my-alert" *ngIf="menus.length==0">
+            <div class="my-alert-text">E-Kaly</div>
+            <div class="my-alert-description">Aucun menu disponible.</div>
+        </div>
+        
+        <div *ngIf="menus.length!=0">
+            <div class="basket-items">
+                <div class="basket-item" *ngFor="let menu of menus; let iMenu = index">
+                    <div class="basket-item-title">{{menu.name}}</div>
+                    <div class="basket-item-infos">
+                        
+                        <div class="basket-item-description"><span class="key">Prix unitaire : </span><span class="value">{{menu.unitPrice | currency : 'EUR'}}</span></div>
+                        <div class="basket-item-description" *ngIf="menu.description!=''"><span class="key">Description  : </span> <span class="value">{{menu.description}}</span></div>
+                    </div>
+                    <div class="btn-wrap" *ngIf="menu.isVisible">
+                        <div class="btn" (click)="toggleVisibility(iMenu)">
+                            Cacher
+                        </div>
+                    </div>
+                    <div class="btn-wrap" *ngIf="!menu.isVisible">
+                        <div class="btn" (click)="toggleVisibility(iMenu)">
+                            Rendre visible
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <app-footer></app-footer>
 </div>
