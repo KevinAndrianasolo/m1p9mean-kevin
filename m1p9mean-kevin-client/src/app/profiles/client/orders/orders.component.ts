@@ -3,6 +3,7 @@ import { Collections } from 'src/app/classes/Collections';
 import { OrderState } from 'src/app/classes/OrderState';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PopupService } from 'src/app/services/popup/popup.service';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-orders',
@@ -15,7 +16,7 @@ export class OrdersComponent implements OnInit {
   public orders : any [] = [];
   public query : any = {};
   public OrderState : any = OrderState;
-  constructor(private api : ApiService, private popupService : PopupService) { }
+  constructor(private api : ApiService, private popupService : PopupService, private storageService : StorageService) { }
 
   async ngOnInit() {
     await this.InitOrders();
@@ -43,6 +44,11 @@ export class OrdersComponent implements OnInit {
   }
   public async InitOrders(){
     try{
+      if(!this.storageService.getAccountToken()){
+        this.orders = [];
+        return;
+      } 
+
       this.onLoading = true;
       let res : any = await this.api.find(Collections.ORDER, this.query , true).toPromise();
       if(res['META']['status'] == "200"){
