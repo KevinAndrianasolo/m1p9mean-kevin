@@ -18,15 +18,21 @@ export class ApiService {
     let url = `${this.baseService._base_url}/api/${model}/${id}`;
     return this.http.get(url, { headers : headers } );
   }
-  public find(model : string, obj : any){
-    let headers = this.baseService.getHeaderInstance()
+  public find(model : string, obj : any, authorization : boolean = false){
+    let headers = this.baseService.getHeaderInstance(authorization);
     let url = `${this.baseService._base_url}/api/${model}/find`;
     return this.http.post(url, obj, { headers : headers } );
   }
-  public save(model : string, obj : any){
-    let headers = this.baseService.getHeaderInstance()
+  public save(model : string, obj : any, authorization : boolean = false){
+    let headers = this.baseService.getHeaderInstance(authorization)
     let url = `${this.baseService._base_url}/api/${model}`;
     return this.http.post(url, obj, { headers : headers } );
+  }
+  public saveAll(model : string, tab : any[], authorization : boolean = false){
+    let headers = this.baseService.getHeaderInstance(authorization)
+    let url = `${this.baseService._base_url}/api/${model}/saveAll`;
+    console.log(headers);
+    return this.http.post(url, tab, { headers : headers } );
   }
   public update(model : string, id : number, obj : any){
     let headers = this.baseService.getHeaderInstance()

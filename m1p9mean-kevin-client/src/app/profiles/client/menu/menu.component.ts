@@ -15,13 +15,27 @@ export class MenuComponent implements OnInit {
   public menu : any  =  {};
   public menuId : number = -1;
   public quantity : number = 0;
+  public isUpdate : boolean = false;
+  public iItem : number = -1;
   constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute, private basketService : BasketService, private router : Router) { }
 
   async ngOnInit() {
     this.menuId = this.activatedRoute.snapshot.params['menuId'];
     await this.InitMenu();
+    this.initBasket();
   }
-
+  public initBasket(){
+    let basket = this.basketService.getBasketOf(this.menu.restaurantId);
+    if(basket){
+      this.iItem = this.basketService.indexOf(basket.items, 'menuId', this.menuId);
+      if(this.iItem !=-1){
+        let basketItem = basket.items[this.iItem ];
+        this.quantity = basketItem.quantity;
+        this.isUpdate = true;
+        console.log(basketItem);
+      }
+    }
+  }
   public async InitMenu(){
     try{
       this.onLoading = true;
@@ -50,12 +64,24 @@ export class MenuComponent implements OnInit {
   }
 
   public addToBasket(){
-    this.basketService.addToBasket(this.menu.restaurantId, {
+    let item = {
       menuId : this.menu._id,
       quantity : this.quantity,
       cost : this.menu.unitPrice * this.quantity
-    });
-    this.popupService.showSuccess("Ajouté au panier");
-    this.router.navigateByUrl(`/client/restaurant/${this.menu.restaurantId}`);
+    };
+
+    if(this.isUpdate) {
+      this.basketService.updateBasket(this.menu.restaurantId, this.iItem, item);
+      this.router.navigateByUrl(`/client/basket`);
+    }
+    else{
+      this.basketService.addToBasket(this.menu.restaurantId, item);
+      this.router.navigateByUrl(`/client/restaurant/${this.menu.restaurantId}`);
+    }
+    
+  }
+  public deleteFromBasket(){
+    this.basketService.deleteFromBasket(this.menu.restaurantId, this.iItem);
+    this.router.navigateByUrl(`/client/basket`);
   }
 }

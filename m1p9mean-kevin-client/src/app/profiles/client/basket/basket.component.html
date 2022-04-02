@@ -1,0 +1,79 @@
+<div class="page">
+    <app-header></app-header>
+    <div class="content">
+        <h1 class="content-title">
+            <span>Mon panier</span>
+            <div class="separator"></div>
+        </h1>
+        <div class="my-alert" *ngIf="basket.length==0">
+            <div class="my-alert-text">Panier vide</div>
+            <div class="my-alert-description">Veuillez ajouter des éléments à votre panier.</div>
+        </div>
+        <div *ngIf="basket.length!=0">
+            <div class="basket-items">
+                <div class="basket-item" *ngFor="let basketItem of basketItems">
+                    <div class="basket-item-title">{{basketItem.menu.name}}</div>
+                    <div class="basket-item-infos">
+                        <div class="basket-item-description"><span class="key">Prix unitaire : </span><span class="value">{{basketItem.menu.unitPrice| currency : 'EUR'}}</span></div>
+                        <div class="basket-item-description"><span class="key">Quantité :</span> <span class="value">{{basketItem.quantity}}</span></div>
+                        <div class="basket-item-description"><span class="key">Prix total : </span><span class="value">{{basketItem.cost | currency : 'EUR'}}</span></div>
+                    </div>
+                    
+                    <div class="btn-wrap">
+                        <div class="btn" routerLink="/client/menu/{{basketItem.menuId}}">
+                            Modifier
+                        </div>
+                    </div>
+                </div>
+                <div class="basket-item" *ngFor="let basketItem of basketItems">
+                    <div class="basket-item-title">{{basketItem.menu.name}}</div>
+                    <div class="basket-item-infos">
+                        <div class="basket-item-description"><span class="key">Prix unitaire : </span><span class="value">{{basketItem.menu.unitPrice| currency : 'EUR'}}</span></div>
+                        <div class="basket-item-description"><span class="key">Quantité :</span> <span class="value">{{basketItem.quantity}}</span></div>
+                        <div class="basket-item-description"><span class="key">Prix total : </span><span class="value">{{basketItem.cost | currency : 'EUR'}}</span></div>
+                    </div>
+                    
+                    <div class="btn-wrap">
+                        <div class="btn" routerLink="/client/menu/{{basketItem.menuId}}">
+                            Modifier
+                        </div>
+                    </div>
+                </div>
+                <div class="basket-item" *ngFor="let basketItem of basketItems">
+                    <div class="basket-item-title">{{basketItem.menu.name}}</div>
+                    <div class="basket-item-infos">
+                        <div class="basket-item-description"><span class="key">Prix unitaire : </span><span class="value">{{basketItem.menu.unitPrice| currency : 'EUR'}}</span></div>
+                        <div class="basket-item-description"><span class="key">Quantité :</span> <span class="value">{{basketItem.quantity}}</span></div>
+                        <div class="basket-item-description"><span class="key">Prix total : </span><span class="value">{{basketItem.cost | currency : 'EUR'}}</span></div>
+                    </div>
+                    
+                    <div class="btn-wrap">
+                        <div class="btn" routerLink="/client/menu/{{basketItem.menuId}}">
+                            Modifier
+                        </div>
+                    </div>
+                </div>
+                <div class="basket-item" *ngFor="let basketItem of basketItems">
+                    <div class="basket-item-title">{{basketItem.menu.name}}</div>
+                    <div class="basket-item-infos">
+                        <div class="basket-item-description"><span class="key">Prix unitaire : </span><span class="value">{{basketItem.menu.unitPrice| currency : 'EUR'}}</span></div>
+                        <div class="basket-item-description"><span class="key">Quantité :</span> <span class="value">{{basketItem.quantity}}</span></div>
+                        <div class="basket-item-description"><span class="key">Prix total : </span><span class="value">{{basketItem.cost | currency : 'EUR'}}</span></div>
+                    </div>
+                    
+                    <div class="btn-wrap">
+                        <div class="btn" routerLink="/client/menu/{{basketItem.menuId}}">
+                            Modifier
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="btn-wrap">
+                <div class="btn" (click)="saveOrders()">Commander</div>
+            </div>
+        </div>
+        
+    </div>
+    <app-footer></app-footer>
+</div>

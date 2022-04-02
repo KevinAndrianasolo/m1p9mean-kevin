@@ -14,6 +14,8 @@ import { HeaderModule } from 'src/app/components/header/header.module';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ClientComponent } from './client.component';
+import { BasketComponent } from './basket/basket.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ClientComponent } from './client.component';
     HomeComponent,
     RestaurantsComponent,
     RestaurantComponent,
-    MenuComponent
+    MenuComponent,
+    BasketComponent,
+    OrdersComponent
   ],
   schemas : [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

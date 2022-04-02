@@ -1,0 +1,16 @@
+.header{
+    padding : 20px 10px;
+    font-weight : bolder;
+    background-color: #ffffff;
+    display : flex;
+    width : 100%;
+    .header-item{
+        padding : 0px 20px;
+        border-right : 1px solid #777;
+        transition : 250ms all;
+        &:hover{
+            color : var(--theme);
+            cursor : pointer;
+        }
+    }
+}

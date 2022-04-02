@@ -1,9 +1,12 @@
-.header{
-    
+.page{
+    display : grid;
+    grid-template-columns: 100%;
+    grid-template-rows : 75px calc(100vh - 186px) 100px;
+    box-sizing: border-box;
 }
 .content{
     padding : 20px;
-    min-height : 100%;
+    overflow: auto;
     .content-title{
         display : flex;
         align-items: center;

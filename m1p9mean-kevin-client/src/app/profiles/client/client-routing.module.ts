@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BasketComponent } from './basket/basket.component';
 import { ClientComponent } from './client.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
+import { OrdersComponent } from './orders/orders.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { SignupComponent } from './signup/signup.component';
@@ -24,6 +26,14 @@ const routes: Routes = [
       {
         path: "restaurants",
         component: RestaurantsComponent
+      },
+      {
+        path: "basket",
+        component: BasketComponent
+      },
+      {
+        path: "orders",
+        component: OrdersComponent
       },
       {
         path: "restaurant/:restaurantId",

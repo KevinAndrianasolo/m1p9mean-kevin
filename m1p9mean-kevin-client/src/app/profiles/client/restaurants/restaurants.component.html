@@ -1,31 +1,33 @@
+<div class="page">
 
-<app-header></app-header>
-<div class="content">
-    <h1 class="content-title">
-        <span>Nos Restaurants</span>
-        <span class="small">E-Kaly  vous présente la liste de leurs restaurants</span>
-        <div class="separator"></div>
-    </h1>
-    <div class="my-alert" *ngIf="restaurants.length==0">
-        <div class="my-alert-text">E-Kaly</div>
-        <div class="my-alert-description">Aucun restaurant disponible.</div>
-    </div>
-    <div class="my-cards restaurants" *ngIf="restaurants.length!=0">
-        <div class="my-card" *ngFor="let restaurant of restaurants" routerLink="/client/restaurant/{{restaurant._id}}">
-            <div class="my-card-image-wrap">
-                <img class="my-card-image" src="assets/img/restaurant-1.jpeg" alt="Image"/>
-            </div>
-            <div class="backdrop-filter">
-                <div class="my-card-infos">
-                    <div class="my-card-description">{{restaurant.description}}</div>
-                    <div class="my-card-description"><i class="fa-solid fa-map-pin icon mr-5"></i>{{restaurant.address}}</div>
+    <app-header></app-header>
+    <div class="content">
+        <h1 class="content-title">
+            <span>Nos Restaurants</span>
+            <span class="small">E-Kaly  vous présente la liste de leurs restaurants</span>
+            <div class="separator"></div>
+        </h1>
+        <div class="my-alert" *ngIf="restaurants.length==0">
+            <div class="my-alert-text">E-Kaly</div>
+            <div class="my-alert-description">Aucun restaurant disponible.</div>
+        </div>
+        <div class="my-cards restaurants" *ngIf="restaurants.length!=0">
+            <div class="my-card" *ngFor="let restaurant of restaurants" routerLink="/client/restaurant/{{restaurant._id}}">
+                <div class="my-card-image-wrap">
+                    <img class="my-card-image" src="assets/img/restaurant-1.jpeg" alt="Image"/>
+                </div>
+                <div class="backdrop-filter">
+                    <div class="my-card-infos">
+                        <div class="my-card-description">{{restaurant.description}}</div>
+                        <div class="my-card-description"><i class="fa-solid fa-map-pin icon mr-5"></i>{{restaurant.address}}</div>
+                    </div>
+                </div>
+                <div class="informations">
+                    <h2 class="title">{{restaurant.name}}</h2>
                 </div>
             </div>
-            <div class="informations">
-                <h2 class="title">{{restaurant.name}}</h2>
-            </div>
+            
         </div>
-        
     </div>
+    <app-footer></app-footer>
 </div>
-<app-footer></app-footer>

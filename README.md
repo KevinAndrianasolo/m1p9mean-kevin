@@ -32,6 +32,10 @@ ng generate component profiles/client/home
 ng generate module profiles/client/home
 ng generate component profiles/client/restaurants
 ng generate module profiles/client/restaurants
+ng generate component profiles/client/basket
+ng generate module profiles/client/basket
+ng generate component profiles/client/orders
+ng generate module profiles/client/orders
 
 ng generate component profiles/client/restaurant
 ng generate component profiles/client/menu

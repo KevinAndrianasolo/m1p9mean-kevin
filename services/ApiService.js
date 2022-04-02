@@ -21,6 +21,11 @@ let save = async function(model, object){
     let res = await collection.insertOne(object);
     return res.insertedId;
 };
+let saveAll = async function(model, tab){
+    for(let i=0; i<tab.length; i++){
+        await save(model, tab[i]);
+    }
+};
 
 let find = async function(model, object){
     let db = await DBUtils.connect();
@@ -55,4 +60,6 @@ module.exports.save = save;
 module.exports.update = update;
 module.exports.deleteById = deleteById;
 module.exports.find = find;
+module.exports.saveAll = saveAll;
+
 
