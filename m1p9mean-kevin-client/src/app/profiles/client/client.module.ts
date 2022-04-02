@@ -16,6 +16,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ClientComponent } from './client.component';
 import { BasketComponent } from './basket/basket.component';
 import { OrdersComponent } from './orders/orders.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { OrdersComponent } from './orders/orders.component';
     CommonModule,
     ClientRoutingModule,
     HeaderModule,
-    FooterModule
+    FooterModule,
+    FormsModule
   ],
   exports : [ClientComponent]
 })

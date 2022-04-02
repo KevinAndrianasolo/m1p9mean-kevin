@@ -11,6 +11,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HeaderModule } from 'src/app/components/header/header.module';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { RestaurantComponent } from './restaurant.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { RestaurantComponent } from './restaurant.component';
     CommonModule,
     HeaderModule,
     FooterModule,
+    FormsModule,
     RestaurantRoutingModule
   ],
   exports : [RestaurantComponent]

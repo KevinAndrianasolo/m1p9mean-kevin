@@ -269,4 +269,23 @@
                 animation: rotate 0.75s 0s linear infinite; 
     }
 }
-      
+.filter-wrap{
+    width : 100%;
+    padding :  5px 20px;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    .select{
+        border : none;
+        padding : 10px;
+        font-size : 15px;
+        font-weight : bolder;
+        transition : all 250ms;
+        &:focus{
+            outline : none;
+        }
+        &:hover{
+            cursor : pointer;
+        }
+    }
+}  

@@ -11,6 +11,7 @@ import { HeaderModule } from 'src/app/components/header/header.module';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { EKalyComponent } from './e-kaly.component';
 import { OrderComponent } from './order/order.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { OrderComponent } from './order/order.component';
     CommonModule,
     HeaderModule,
     FooterModule,
-    EKalyRoutingModule
+    EKalyRoutingModule,
+    FormsModule
   ],
   exports : [EKalyComponent]
 })

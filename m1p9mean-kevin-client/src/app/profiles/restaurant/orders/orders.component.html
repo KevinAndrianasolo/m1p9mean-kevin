@@ -5,10 +5,17 @@
             <span>Commandes en cours</span>
             <div class="separator"></div>
         </h1>
+        <div class="filter-wrap">
+            <select class="select" (change)="search()" [(ngModel)]="orderStateFilter">
+                <option  class="select-options" value="">Toutes les commandes</option>
+                <option  class="select-options" *ngFor="let key of orderStateKeys" [value]="key">{{OrderState.map[key]}}</option>
+            </select>
+        </div>
         <div class="my-alert" *ngIf="orders.length==0">
             <div class="my-alert-text">E-Kaly</div>
             <div class="my-alert-description">Aucune commande en cours.</div>
         </div>
+        
         <div *ngIf="orders.length!=0">
             <div class="basket-items">
                 <div class="basket-item" *ngFor="let order of orders">

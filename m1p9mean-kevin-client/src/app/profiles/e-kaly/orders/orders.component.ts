@@ -15,6 +15,8 @@ export class OrdersComponent implements OnInit {
   public orders : any [] = [];
   public query : any = {};
   public OrderState : any = OrderState;
+  public orderStateFilter : any = "";
+  public orderStateKeys : any = Object.keys(OrderState.map);
   constructor(private api : ApiService, private popupService : PopupService) { }
 
   async ngOnInit() {
@@ -60,6 +62,9 @@ export class OrdersComponent implements OnInit {
     finally{
       this.onLoading = false;
     }
+  }
+  public search(){
+    this.findOrderWithState(this.orderStateFilter);
   }
 
 }
