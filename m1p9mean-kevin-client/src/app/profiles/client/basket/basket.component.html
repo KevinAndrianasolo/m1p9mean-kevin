@@ -25,48 +25,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="basket-item" *ngFor="let basketItem of basketItems">
-                    <div class="basket-item-title">{{basketItem.menu.name}}</div>
-                    <div class="basket-item-infos">
-                        <div class="basket-item-description"><span class="key">Prix unitaire : </span><span class="value">{{basketItem.menu.unitPrice| currency : 'EUR'}}</span></div>
-                        <div class="basket-item-description"><span class="key">Quantité :</span> <span class="value">{{basketItem.quantity}}</span></div>
-                        <div class="basket-item-description"><span class="key">Prix total : </span><span class="value">{{basketItem.cost | currency : 'EUR'}}</span></div>
-                    </div>
-                    
-                    <div class="btn-wrap">
-                        <div class="btn" routerLink="/client/menu/{{basketItem.menuId}}">
-                            Modifier
-                        </div>
-                    </div>
-                </div>
-                <div class="basket-item" *ngFor="let basketItem of basketItems">
-                    <div class="basket-item-title">{{basketItem.menu.name}}</div>
-                    <div class="basket-item-infos">
-                        <div class="basket-item-description"><span class="key">Prix unitaire : </span><span class="value">{{basketItem.menu.unitPrice| currency : 'EUR'}}</span></div>
-                        <div class="basket-item-description"><span class="key">Quantité :</span> <span class="value">{{basketItem.quantity}}</span></div>
-                        <div class="basket-item-description"><span class="key">Prix total : </span><span class="value">{{basketItem.cost | currency : 'EUR'}}</span></div>
-                    </div>
-                    
-                    <div class="btn-wrap">
-                        <div class="btn" routerLink="/client/menu/{{basketItem.menuId}}">
-                            Modifier
-                        </div>
-                    </div>
-                </div>
-                <div class="basket-item" *ngFor="let basketItem of basketItems">
-                    <div class="basket-item-title">{{basketItem.menu.name}}</div>
-                    <div class="basket-item-infos">
-                        <div class="basket-item-description"><span class="key">Prix unitaire : </span><span class="value">{{basketItem.menu.unitPrice| currency : 'EUR'}}</span></div>
-                        <div class="basket-item-description"><span class="key">Quantité :</span> <span class="value">{{basketItem.quantity}}</span></div>
-                        <div class="basket-item-description"><span class="key">Prix total : </span><span class="value">{{basketItem.cost | currency : 'EUR'}}</span></div>
-                    </div>
-                    
-                    <div class="btn-wrap">
-                        <div class="btn" routerLink="/client/menu/{{basketItem.menuId}}">
-                            Modifier
-                        </div>
-                    </div>
-                </div>
             </div>
     
             <div class="btn-wrap">
