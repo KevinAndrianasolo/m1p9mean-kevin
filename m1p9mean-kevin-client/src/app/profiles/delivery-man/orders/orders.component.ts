@@ -10,7 +10,7 @@ import { PopupService } from 'src/app/services/popup/popup.service';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-
+  public OrderState : any = OrderState;
   public onLoading : boolean = false;
   public orders : any [] = [];
   constructor(private api : ApiService, private popupService : PopupService) { }
@@ -18,13 +18,48 @@ export class OrdersComponent implements OnInit {
   async ngOnInit() {
     await this.InitOrders();
   }
-
+  public async InitRestaurantOfOrders(orders : any[]){
+    for(let i=0; i<orders.length; i++){
+      orders[i].restaurant = await this.getRestaurant(orders[i].restaurantId);
+    }
+    return orders;
+  }
+  public async getRestaurant(restaurantId : any){
+    let res : any = await this.api.findById(Collections.RESTAURANT, restaurantId).toPromise();
+      if(res['META']['status'] == "200"){
+        let restaurant = res['DATA'];
+        return restaurant;
+      }
+      else{
+        throw new Error(res['META']['message']);
+      }
+  }
+  public async deliverOrder(orderId : any){
+    console.log(orderId);
+    try{
+      this.onLoading = true;
+      let res : any = await this.api.update(Collections.ORDER, orderId, {orderStateId : OrderState.RESERVED_BY_DELIVERY_MAN} ).toPromise();
+      if(res['META']['status'] == "200"){
+        await this.InitOrders();
+      }
+      else{
+        throw new Error(res['META']['message']);
+      }     
+    }
+    catch(err : any){
+      this.popupService.showError(err.message);
+    }
+    finally{
+      this.onLoading = false;
+    }
+  }
   public async InitOrders(){
     try{
       this.onLoading = true;
       let res : any = await this.api.find(Collections.ORDER, {orderStateId:OrderState.READY}).toPromise();
       if(res['META']['status'] == "200"){
-        this.orders = res['DATA'];
+        let orders = res['DATA'];
+        this.orders = await this.InitRestaurantOfOrders(orders);
         console.log(this.orders);
       }
       else{

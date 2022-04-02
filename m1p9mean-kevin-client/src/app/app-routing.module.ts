@@ -20,18 +20,15 @@ const routes: Routes = [
   },
   {
     path: "restaurant",
-    loadChildren: () => import('./profiles/restaurant/restaurant.module').then(m => m.RestaurantModule),
-    // canActivate: [AuthGuardService]
+    loadChildren: () => import('./profiles/restaurant/restaurant.module').then(m => m.RestaurantModule)
   },
   {
     path: "delivery-man",
-    loadChildren: () => import('./profiles/delivery-man/delivery-man.module').then(m => m.DeliveryManModule),
-    // canActivate: [AuthGuardService]
+    loadChildren: () => import('./profiles/delivery-man/delivery-man.module').then(m => m.DeliveryManModule)
   },
   {
     path: "e-kaly",
-    loadChildren: () => import('./profiles/e-kaly/e-kaly.module').then(m => m.EKalyModule),
-    // canActivate: [AuthGuardService]
+    loadChildren: () => import('./profiles/e-kaly/e-kaly.module').then(m => m.EKalyModule)
   }
 ];
 

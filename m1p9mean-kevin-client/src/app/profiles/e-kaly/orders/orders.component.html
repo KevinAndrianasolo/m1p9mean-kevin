@@ -1,8 +1,28 @@
-<app-header></app-header>
-<div class="content">
-    <h1 class="content-title">
-        <span>Commandes</span>
-        <div class="separator"></div>
-    </h1>
+<div class="page">
+    <app-header profile="e-kaly"></app-header>
+    <div class="content">
+        <h1 class="content-title">
+            <span>Commandes</span>
+            <div class="separator"></div>
+        </h1>
+        <div class="my-alert" *ngIf="orders.length==0">
+            <div class="my-alert-text">E-Kaly</div>
+            <div class="my-alert-description">Aucune commande en cours.</div>
+        </div>
+        <div *ngIf="orders.length!=0">
+            <div class="basket-items">
+                <div class="basket-item" *ngFor="let order of orders">
+                    <div class="basket-item-title">{{order.restaurant.name}}</div>
+                    <div class="basket-item-infos">
+                        
+                        <div class="basket-item-description"><span class="key">Nombre d'article : </span> <span class="value">{{order.quantity}}</span></div>
+                        <div class="basket-item-description"><span class="key">Prix total : </span><span class="value">{{order.cost | currency : 'EUR'}}</span></div>
+                        <div class="basket-item-description"><span class="key">Commande du  : </span> <span class="value">{{order.orderDate|date:'medium'}}</span></div>
+                        <div class="basket-item-description"><span class="key">Statut : </span> <span class="value theme">{{OrderState.map[order.orderStateId]}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
 </div>
-<app-footer></app-footer>

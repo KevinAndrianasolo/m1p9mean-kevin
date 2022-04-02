@@ -11,7 +11,7 @@ import { StorageService } from 'src/app/services/storage/storage.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private onLoading : boolean = false;
+  public onLoading : boolean = false;
   constructor(private popupService : PopupService, private storageService : StorageService, private authService : AuthService, private router : Router) { }
 
   ngOnInit(): void {

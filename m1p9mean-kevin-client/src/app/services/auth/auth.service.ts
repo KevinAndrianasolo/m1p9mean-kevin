@@ -10,6 +10,11 @@ export class AuthService {
   constructor(private http : HttpClient, private baseService : BaseService) { 
 
   }
+  public logout(){
+    let headers = this.baseService.getHeaderInstance(true)
+    let url = `${this.baseService._base_url}/auth/logout`;
+    return this.http.delete(url, { headers : headers } );
+  }
   public login(user : any){
     let headers = this.baseService.getHeaderInstance()
     let url = `${this.baseService._base_url}/auth/login`;

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from 'src/app/services/auth-guard/auth-guard.service';
 import { BasketComponent } from './basket/basket.component';
 import { ClientComponent } from './client.component';
 import { HomeComponent } from './home/home.component';
@@ -17,7 +18,7 @@ const routes: Routes = [
       {
         path: "home",
         component: HomeComponent,
-        // canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService]
       },
       {
         path: "signup",
@@ -25,23 +26,28 @@ const routes: Routes = [
       },
       {
         path: "restaurants",
-        component: RestaurantsComponent
+        component: RestaurantsComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: "basket",
-        component: BasketComponent
+        component: BasketComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: "orders",
-        component: OrdersComponent
+        component: OrdersComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: "restaurant/:restaurantId",
-        component: RestaurantComponent
+        component: RestaurantComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: "menu/:menuId",
-        component: MenuComponent
+        component: MenuComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: '',

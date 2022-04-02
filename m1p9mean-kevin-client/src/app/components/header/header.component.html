@@ -1,6 +1,27 @@
-<div class="header client-header">
+<div class="header" *ngIf="profile=='client'">
     <div class="header-item" (click)="goTo('/client/home')">Accueil</div>
     <div class="header-item" (click)="goTo('/client/restaurants')">Restaurants</div>
     <div class="header-item" (click)="goTo('/client/basket')">Mon panier</div>
     <div class="header-item" (click)="goTo('/client/orders')">Mes commandes</div>
+    <div class="header-item danger" (click)="logout()">Se déconnecter</div>
+</div>
+<div class="header" *ngIf="profile=='restaurant'">
+    <div class="header-item" (click)="goTo('/restaurant/home')">Accueil</div>
+    <div class="header-item" (click)="goTo('/restaurant/orders')">Commandes en cours</div>
+    <div class="header-item" (click)="goTo('/restaurant/management')">Gestion de menu</div>
+    <div class="header-item" (click)="goTo('/restaurant/profit')">Bénéfices</div>
+    <div class="header-item danger" (click)="logout()">Se déconnecter</div>
+</div>
+<div class="header" *ngIf="profile=='e-kaly'">
+    <div class="header-item" (click)="goTo('/e-kaly/home')">Accueil</div>
+    <div class="header-item" (click)="goTo('/e-kaly/orders')">Commandes</div>
+    <div class="header-item" (click)="goTo('/e-kaly/management')">Gestion</div>
+    <div class="header-item" (click)="goTo('/e-kaly/profit')">Bénéfices E-Kaly</div>
+    <div class="header-item danger" (click)="logout()">Se déconnecter</div>
+</div>
+<div class="header" *ngIf="profile=='delivery-man'">
+    <div class="header-item" (click)="goTo('/delivery-man/home')">Accueil</div>
+    <div class="header-item" (click)="goTo('/delivery-man/orders')">Commandes à livrer</div>
+    <div class="header-item danger" (click)="logout()">Se déconnecter</div>
+
 </div>

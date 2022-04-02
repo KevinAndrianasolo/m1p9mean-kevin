@@ -6,7 +6,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height : 100%;
     padding: 20px;
     &.sm{
         height : auto;
@@ -180,7 +179,7 @@
         overflow: hidden;
         position: relative;
         width : 300px;
-        height : 125px;
+        height : 160px;
 
         .basket-item-title{
             border-top-left-radius: 10px;
@@ -224,3 +223,50 @@
         }
     }
 }
+
+@-webkit-keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg); }
+    50% {
+      -webkit-transform: rotate(180deg);
+              transform: rotate(180deg); }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg); } }
+  
+  @keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg); }
+    50% {
+      -webkit-transform: rotate(180deg);
+              transform: rotate(180deg); }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg); } }
+.loader{
+    --border-width : 2px;
+    --width : 15px;
+    --height : 15px;
+    --color : var(--black);
+    .ball-clip-rotate{
+        width: var(--width);
+        height: var(--height);
+    }
+    .ball-clip-rotate > div {
+        background-color: var(--color);
+        width: var(--width);
+        height: var(--height);
+        border-radius: 100%;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+        border: var(--border-width) solid var(--color);
+        border-bottom-color: transparent;
+
+        background: transparent !important;
+        -webkit-animation: rotate 0.75s 0s linear infinite;
+                animation: rotate 0.75s 0s linear infinite; 
+    }
+}
+      

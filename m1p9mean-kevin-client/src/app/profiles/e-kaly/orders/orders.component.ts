@@ -20,7 +20,22 @@ export class OrdersComponent implements OnInit {
   async ngOnInit() {
     await this.InitOrders();
   }
-
+  public async InitRestaurantOfOrders(orders : any[]){
+    for(let i=0; i<orders.length; i++){
+      orders[i].restaurant = await this.getRestaurant(orders[i].restaurantId);
+    }
+    return orders;
+  }
+  public async getRestaurant(restaurantId : any){
+    let res : any = await this.api.findById(Collections.RESTAURANT, restaurantId).toPromise();
+      if(res['META']['status'] == "200"){
+        let restaurant = res['DATA'];
+        return restaurant;
+      }
+      else{
+        throw new Error(res['META']['message']);
+      }
+  }
   public async findOrderWithState(orderStateId : any){
     if(!orderStateId) delete this.query['orderStateId'];
     else this.query['orderStateId'] = orderStateId;
@@ -31,7 +46,8 @@ export class OrdersComponent implements OnInit {
       this.onLoading = true;
       let res : any = await this.api.find(Collections.ORDER, this.query ).toPromise();
       if(res['META']['status'] == "200"){
-        this.orders = res['DATA'];
+        let orders = res['DATA'];
+        this.orders = await this.InitRestaurantOfOrders(orders);
         console.log(this.orders);
       }
       else{

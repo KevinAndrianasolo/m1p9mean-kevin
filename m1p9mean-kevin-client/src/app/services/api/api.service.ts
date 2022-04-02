@@ -23,6 +23,11 @@ export class ApiService {
     let url = `${this.baseService._base_url}/api/${model}/find`;
     return this.http.post(url, obj, { headers : headers } );
   }
+  public findOne(model : string, obj : any, authorization : boolean = false){
+    let headers = this.baseService.getHeaderInstance(authorization);
+    let url = `${this.baseService._base_url}/api/${model}/findOne`;
+    return this.http.post(url, obj, { headers : headers } );
+  }
   public save(model : string, obj : any, authorization : boolean = false){
     let headers = this.baseService.getHeaderInstance(authorization)
     let url = `${this.baseService._base_url}/api/${model}`;

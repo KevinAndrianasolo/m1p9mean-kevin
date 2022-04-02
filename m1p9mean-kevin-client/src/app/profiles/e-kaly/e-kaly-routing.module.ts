@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from 'src/app/services/auth-guard/auth-guard.service';
 import { EKalyComponent } from './e-kaly.component';
 import { HomeComponent } from './home/home.component';
 import { ManagementComponent } from './management/management.component';
@@ -13,23 +14,28 @@ const routes: Routes = [{
   children : [
     {
       path: "home",
-      component: HomeComponent
+      component: HomeComponent,
+      canActivate: [AuthGuardService]
     },
     {
       path: "orders",
-      component: OrdersComponent
+      component: OrdersComponent,
+      canActivate: [AuthGuardService]
     },
     {
       path: "order/:orderId",
-      component: OrderComponent
+      component: OrderComponent,
+      canActivate: [AuthGuardService]
     },
     {
       path: "profit",
-      component: ProfitComponent
+      component: ProfitComponent,
+      canActivate: [AuthGuardService]
     },
     {
       path: "management",
-      component: ManagementComponent
+      component: ManagementComponent,
+      canActivate: [AuthGuardService]
     },
     {
       path: '',

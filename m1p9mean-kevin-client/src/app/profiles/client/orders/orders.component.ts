@@ -42,6 +42,25 @@ export class OrdersComponent implements OnInit {
         throw new Error(res['META']['message']);
       }
   }
+  public async payOrder(orderId : any){
+    console.log(orderId);
+    try{
+      this.onLoading = true;
+      let res : any = await this.api.update(Collections.ORDER, orderId, {orderStateId : OrderState.DELIVERED_AND_PAID} ).toPromise();
+      if(res['META']['status'] == "200"){
+        await this.InitOrders();
+      }
+      else{
+        throw new Error(res['META']['message']);
+      }     
+    }
+    catch(err : any){
+      this.popupService.showError(err.message);
+    }
+    finally{
+      this.onLoading = false;
+    }
+  }
   public async InitOrders(){
     try{
       if(!this.storageService.getAccountToken()){

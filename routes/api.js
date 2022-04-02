@@ -34,6 +34,24 @@ router.get('/:model/:id', async function(req, res, next) {
     res.send(ResponseBuilder.error(500, e.message));
   }
 });
+router.post('/:model/findOne', async function(req, res, next) {
+  try{
+    let model = req.params["model"];
+    let object = req.body;
+    let userTokenId = req.userTokenId;
+    if(userTokenId){
+      let userId = await AuthService.findUserIdWithUserTokenId(userTokenId);
+      object['userId'] = userId;
+    } 
+
+    let tmp =  await ApiService.findOne(model, object);
+    let response = ResponseBuilder.success(200, `Search result of ${model}`, tmp);
+    res.send(response);
+  }
+  catch(e){
+    res.send(ResponseBuilder.error(500, e.message));
+  }
+});
 router.post('/:model/find', async function(req, res, next) {
   try{
     let model = req.params["model"];

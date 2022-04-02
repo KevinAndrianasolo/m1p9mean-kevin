@@ -9,9 +9,8 @@ let check = async function(authObj){
         let userId = await findUserIdWithUserTokenId(authObj.userTokenId);
         let db = await DBUtils.connect();
         let collection = db.collection(Collections.USER);
-    
         let user = await collection.findOne({
-            _id : new ObjectId( userId),
+            _id : userId,
             profileId : authObj.profileId
         });
     
@@ -32,7 +31,6 @@ let login = async function(user){
         username : user.username,
         password : user.password
     });
-    console.log(res);
     if(res==null) throw new Error("Account does not exists.");
 
     let userTokenId = await saveUserToken(res['_id']);
@@ -65,7 +63,7 @@ let saveUserToken = async function(userId){
 let findUserIdWithUserTokenId = async function(userTokenId){
     let res = await ApiService.findById(Collections.USER_TOKEN, userTokenId);
     if(res==null) throw new Error("Invalid userToken.");
-    return res['userId'];
+    return ObjectId.valueOf(res['userId']);
 };
 
 let findUserWithUserTokenId = async function(userTokenId){

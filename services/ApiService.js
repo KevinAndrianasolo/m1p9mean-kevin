@@ -28,9 +28,16 @@ let saveAll = async function(model, tab){
 };
 
 let find = async function(model, object){
+    
     let db = await DBUtils.connect();
     let collection = db.collection(model);
     let res = await collection.find(object).toArray();
+    return res;
+};
+let findOne = async function(model, object){
+    let db = await DBUtils.connect();
+    let collection = db.collection(model);
+    let res = await collection.findOne(object);
     return res;
 };
 let update = async function(model, id, object){
@@ -61,5 +68,7 @@ module.exports.update = update;
 module.exports.deleteById = deleteById;
 module.exports.find = find;
 module.exports.saveAll = saveAll;
+module.exports.findOne = findOne;
+
 
 

@@ -21,7 +21,13 @@ export class StorageService {
   public setBasket(basket : any){
     sessionStorage.setItem('basket', JSON.stringify(basket));
   }
-
+  public getRestaurantId(){
+    let token = localStorage['restaurantId']==undefined ? "" : localStorage['restaurantId'];
+    return token;
+  }
+  public setRestaurantId(token : string){
+    localStorage['restaurantId'] = token;
+  }
   /*
   * PROFILE
   */
@@ -52,5 +58,7 @@ export class StorageService {
   }
   public clear(){
     localStorage.clear();
+    sessionStorage.clear();
+
   }
 }

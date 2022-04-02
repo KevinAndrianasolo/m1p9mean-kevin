@@ -1,5 +1,28 @@
-<form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
-    <input type="text" name="username" ngModel/>
-    <input type="password" name="password" ngModel/>
-    <button type="submit">Se connecter</button>
-</form>
+<div class="form-container">
+    <form class="form" (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+        <h1 class="form-title">Se connecter</h1>
+        
+        <div class="form-group">
+            <div class="input-group">
+                <label class="label">Nom d'utilisateur</label>
+                <input type="text" name="username" ngModel/>
+            </div>
+            <div class="input-group">
+                <label class="label">Mot de passe</label>
+                <input type="password" name="password" ngModel/>
+            </div>
+        </div>
+        <div class="form-btn-wrap">
+            <button class="form-btn {{onLoading?'disabled':''}}" type="submit">
+                <span>Se connecter</span>
+                <div class="loader" *ngIf="onLoading">
+                    <div class="ball-clip-rotate">
+                        <div></div>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </form>
+</div>
+
+
