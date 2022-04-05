@@ -4,6 +4,10 @@
     color : var(--black);
     margin : 20px;
     padding-bottom : 40px;
+    &.card{
+        width : 400px;
+        margin : 0 auto;
+    }
     .my-form-instruction{
         font-size : 13px;
         margin : 0px;
@@ -32,20 +36,17 @@
 }
 .my-form-btn{
     float : right;
-    --padding-start : 10px;
-    --padding-end : 10px;
-    --padding-top : 5px;
-    --padding-bottom : 5px;
+    padding : 5px 10px;
 
     font-size : 13px;
-    --background : var(--theme);
-    --background-activated: var(--theme);
     text-transform: none;
+    display : flex;
     &.left{
         float : none;
-        --background : #eee;
-        --background-activated: #eee;
         color : var(--black);
+    }
+    .loader{
+        margin-left :5px;
     }
 }
 .my-form-group{
@@ -86,7 +87,6 @@
     border-bottom : 2px solid #eee;
     margin-bottom : 15px;
     font-size : 13px;
-    --padding-start: 0px;
     min-height : 0px;
     ion-button{
         ion-icon{
@@ -103,9 +103,13 @@
         opacity : 0.7;
     }
     .my-form-input{
-        --padding-top : 5px;
-        --padding-bottom : 5px;
         font-size : 15px;
+        border : none;
+        padding : 5px;
+        width : 100%;
+        &:focus{
+            outline : none;
+        }
     }
    
 }
