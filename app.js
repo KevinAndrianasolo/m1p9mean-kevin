@@ -8,6 +8,7 @@ var cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api');
+var profitRouter = require('./routes/profit');
 var authRouter = require('./routes/auth');
 
 // Middleware
@@ -32,7 +33,8 @@ app.use(AuthMiddleware);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api', apiRouter);
+app.use('/api/reflect', apiRouter);
+app.use('/api/profit', profitRouter);
 app.use('/auth', authRouter);
 
 

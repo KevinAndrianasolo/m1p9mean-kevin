@@ -18,9 +18,11 @@ export class OrdersComponent implements OnInit {
   public OrderState : any = OrderState;
   public orderStateFilter : any = "";
   public orderStateKeys : any = Object.keys(OrderState.map);
+  public restaurantId : any = null;
   constructor(private api : ApiService, private popupService : PopupService, private storageService : StorageService) { }
 
   async ngOnInit() {
+    this.restaurantId = this.storageService.getRestaurantId();
     await this.InitOrders();
   }
   public async InitRestaurantOfOrders(orders : any[]){
@@ -47,12 +49,11 @@ export class OrdersComponent implements OnInit {
   public async InitOrders(){
     try{
       this.onLoading = true;
-      let restaurantId = this.storageService.getRestaurantId();
-      if(!restaurantId) {
+      if(!this.restaurantId) {
         this.orders = [];
         return;
       }
-      this.query.restaurantId = restaurantId;
+      this.query.restaurantId = this.restaurantId;
       let res : any = await this.api.find(Collections.ORDER, this.query ).toPromise();
       if(res['META']['status'] == "200"){
         let orders = res['DATA'];

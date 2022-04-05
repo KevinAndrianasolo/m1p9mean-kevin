@@ -88,6 +88,8 @@ ng generate service services/restaurant/restaurant
 ng generate service services/menu/menu
 ng generate service services/order/order
 ng generate service services/api/api
+ng generate service services/profit/profit
+
 
 
 

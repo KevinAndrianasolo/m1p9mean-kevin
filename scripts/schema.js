@@ -210,3 +210,20 @@ db.order.findOneAndUpdate({
 });
 
 db.order.remove({"_id":new ObjectId("6242a79a2597694c914ff9ec")});
+
+
+db.menu.findOneAndUpdate({
+    _id : new ObjectId("6242a44b2597694c914ff9e6")
+}, {
+    $set : {
+        "description" : "Des cookies supers croquants, avec des pépites de chocolat, sans gluten.. Choisissez la votre !"
+    }
+});
+
+
+var now = new Date();
+db.order.updateMany({},{
+    $set : {
+        "orderDate" : now
+    }
+});

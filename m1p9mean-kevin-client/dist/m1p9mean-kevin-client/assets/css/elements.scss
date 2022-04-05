@@ -289,3 +289,14 @@
         }
     }
 }  
+.my-table{
+    margin : 0 auto;
+    tr{
+        border : 1px solid #eee
+    }
+    td, th{
+        border : 1px solid #777;
+        padding : 10px 20px;
+    }
+
+}

@@ -5,6 +5,24 @@
             <span>Bénéfices de mon restaurant</span>
             <div class="separator"></div>
         </h1>
+        <div class="my-alert" *ngIf="profits.length==0">
+            <div class="my-alert-text">E-Kaly</div>
+            <div class="my-alert-description">Aucun bénéfice enregistré.</div>
+        </div>
+        <table class="my-table" *ngIf="profits.length!=0">
+            <tr>
+                <th>Date</th>
+                <th>Restaurant</th>
+                <th>Bénéfices</th>
+                <th>Nombre de commande</th>
+            </tr>
+            <tr *ngFor="let profit of profits">
+                <td>{{profit._id.date}}</td>
+                <td>{{restaurant.name}}</td>
+                <td>{{profit.totalProfit|currency:'EUR'}}</td>
+                <td>{{profit.totalOrders}}</td>
+            </tr>
+        </table>
     </div>
     <app-footer></app-footer>
 </div>
