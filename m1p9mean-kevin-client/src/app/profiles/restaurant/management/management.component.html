@@ -5,6 +5,11 @@
             <span>Gestion de mon restaurant</span>
             <div class="separator"></div>
         </h1>
+        <div class="add-btn-wrap">
+            <div class="add-btn" routerLink="/restaurant/menu-form">
+                Créer un nouveau menu
+            </div>
+        </div>
         <div class="filter-wrap">
             <select class="select" (change)="search()" [(ngModel)]="visibility">
                 <option  class="select-options" value="">Tous les menus</option>
@@ -13,6 +18,8 @@
                 
             </select>
         </div>
+       
+       
         <div class="my-alert" *ngIf="menus.length==0">
             <div class="my-alert-text">E-Kaly</div>
             <div class="my-alert-description">Aucun menu disponible.</div>
@@ -21,7 +28,14 @@
         <div *ngIf="menus.length!=0">
             <div class="basket-items">
                 <div class="basket-item" *ngFor="let menu of menus; let iMenu = index">
-                    <div class="basket-item-title">{{menu.name}}</div>
+                    <div class="basket-item-title " >
+                        <span>{{menu.name}}</span>
+                        <div class="action-wrap">
+                            <i class="fa fa-edit icon" (click)="edit(menu._id)"></i>
+                            <i class="fa fa-remove icon" (click)="delete(menu._id)"></i>
+
+                        </div>
+                    </div>
                     <div class="basket-item-infos">
                         
                         <div class="basket-item-description"><span class="key">Prix unitaire : </span><span class="value">{{menu.unitPrice | currency : 'EUR'}}</span></div>

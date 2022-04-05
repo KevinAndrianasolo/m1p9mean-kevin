@@ -76,7 +76,7 @@ router.post('/:model/saveAll', async function(req, res, next) {
   try{
     let model = req.params["model"];
     let tab = req.body;
-    console.log(tab);
+    
     let userTokenId = req.userTokenId;
     if(userTokenId){
       let userId = await AuthService.findUserIdWithUserTokenId(userTokenId);

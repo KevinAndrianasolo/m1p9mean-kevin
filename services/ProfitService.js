@@ -14,7 +14,7 @@ let findProfits = async function(){
                 
             },
              totalProfit: { $sum: "$cost" },
-             totalOrders: { $count: {} }
+             totalOrders: { $sum: "$quantity" }
           }
         }
       ]).toArray();
@@ -36,7 +36,7 @@ let findProfitOf = async function(restaurantId){
                 date : { $dateToString: { format: "%d-%m-%Y", date: "$orderDate"} }
             },
              totalProfit: { $sum: "$cost" },
-             totalOrders: { $count: {} }
+             totalOrders: { $sum: "$quantity" }
           }
         }
       ]).toArray();

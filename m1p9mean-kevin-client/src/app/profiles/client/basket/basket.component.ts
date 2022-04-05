@@ -49,9 +49,10 @@ export class BasketComponent implements OnInit {
       if(!this.storageService.getAccountToken()) throw new Error("Veuillez vous connecter pour continuer.");
 
       this.onLoading = true;
+      let now = new Date();
       for(let i=0; i<this.basket.length; i++){
         this.basket[i]['orderStateId'] = OrderState.IN_PROGRESS;
-        this.basket[i]['orderDate'] = new Date();
+        this.basket[i]['orderDate'] = now;
       }
       console.log(this.basket);
       let res : any = await this.api.saveAll(Collections.ORDER, this.basket , true).toPromise();

@@ -12,6 +12,7 @@ import { HeaderModule } from 'src/app/components/header/header.module';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { RestaurantComponent } from './restaurant.component';
 import { FormsModule } from '@angular/forms';
+import { MenuFormComponent } from './menu-form/menu-form.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     OrdersComponent,
     ProfitComponent,
     ManagementComponent,
-    OrderComponent
+    OrderComponent,
+    MenuFormComponent
   ],
   schemas : [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

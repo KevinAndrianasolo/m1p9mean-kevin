@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Collections } from 'src/app/classes/Collections';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PopupService } from 'src/app/services/popup/popup.service';
@@ -15,7 +16,7 @@ export class ManagementComponent implements OnInit {
   public onLoading : boolean = false;
   public query : any =  {};
   public visibility : any = "";
-  constructor(private api : ApiService, private popupService : PopupService, private storageService : StorageService) { }
+  constructor(private api : ApiService, private popupService : PopupService, private storageService : StorageService, private router : Router) { }
 
   async ngOnInit(){
     this.restaurantId = this.storageService.getRestaurantId();
@@ -55,6 +56,27 @@ export class ManagementComponent implements OnInit {
     try{
       this.onLoading = true;
       let res : any = await this.api.update(Collections.MENU, this.menus[iMenu]._id, {isVisible : !this.menus[iMenu].isVisible} ).toPromise();
+      if(res['META']['status'] == "200"){
+        await this.InitMenus();
+      }
+      else{
+        throw new Error(res['META']['message']);
+      }     
+    }
+    catch(err : any){
+      this.popupService.showError(err.message);
+    }
+    finally{
+      this.onLoading = false;
+    }
+  }
+  public edit(menuId : any){
+    this.router.navigateByUrl(`/restaurant/menu-form?menuId=${menuId}`)
+  }
+  public async delete(menuId : number){
+    try{
+      this.onLoading = true;
+      let res : any = await this.api.delete(Collections.MENU, menuId).toPromise();
       if(res['META']['status'] == "200"){
         await this.InitMenus();
       }

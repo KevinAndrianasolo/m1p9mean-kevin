@@ -1,3 +1,5 @@
+const { ObjectId } = require("mongodb");
+
 db.createCollection("profile");
 db.createCollection("user");
 db.createCollection("userToken");
@@ -209,7 +211,7 @@ db.order.findOneAndUpdate({
     }
 });
 
-db.order.remove({"_id":new ObjectId("6242a79a2597694c914ff9ec")});
+db.menu.deleteOne({"_id":new ObjectId("624bf3042395b731a3a14906")});
 
 
 db.menu.findOneAndUpdate({

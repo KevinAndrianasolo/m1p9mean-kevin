@@ -18,6 +18,7 @@ let findById = async function(model, id){
 let save = async function(model, object){
     let db = await DBUtils.connect();
     let collection = db.collection(model);
+    object = normalize(object);
     let res = await collection.insertOne(object);
     return res.insertedId;
 };
@@ -40,9 +41,17 @@ let findOne = async function(model, object){
     let res = await collection.findOne(object);
     return res;
 };
+let normalize = function (object){
+    let keys = Object.keys(object);
+    for(let i=0; i<keys.length; i++){
+        if(keys[i].toLowerCase().includes('date')) object[keys[i]] = new Date(object[keys[i]]);
+    }
+    return object;
+};
 let update = async function(model, id, object){
     let db = await DBUtils.connect();
     let collection = db.collection(model);
+    object = normalize(object);
     let res = await collection.findOneAndUpdate({
             _id : new ObjectId(id)
         }, {

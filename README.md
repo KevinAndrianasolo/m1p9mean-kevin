@@ -50,6 +50,8 @@ ng generate component profiles/restaurant/orders
 ng generate component profiles/restaurant/order
 ng generate component profiles/restaurant/profit
 ng generate component profiles/restaurant/management
+ng generate component profiles/restaurant/menu-form
+
 
 
 

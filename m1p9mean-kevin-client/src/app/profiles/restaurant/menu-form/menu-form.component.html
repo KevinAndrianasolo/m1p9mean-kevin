@@ -1,0 +1,45 @@
+<div class="page">
+    <app-header profile="restaurant"></app-header>
+    <div class="content">
+        <h1 class="content-title">
+            <span>Formulaire Menu</span>
+            <div class="separator"></div>
+        </h1>
+
+        <div class="my-form card">
+            <section class="my-form-section">
+              <h2 class="my-form-section-title">Informations</h2>
+              <form (ngSubmit)="formSubmit()" #signupForm="ngForm">
+                <div class="my-form-input-group" lines="none">
+                  <label class="my-form-label">Nom :</label>
+                  <input type="text" class="my-form-input" [(ngModel)]="form.name" name="name">
+                </div>
+                <div class="my-form-input-group" lines="none">
+                  <label class="my-form-label">Description :</label>
+                  <input type="text" class="my-form-input" [(ngModel)]="form.description" name="description">
+                </div>
+                
+                <div class="my-form-input-group" lines="none">
+                  <label class="my-form-label">Prix unitaire :</label>
+                  <input type="text" class="my-form-input" [(ngModel)]="form.unitPrice" name="unitPrice">
+                </div>
+                <div class="my-form-instruction my-form-confidentiality">
+                  
+                  En cliquant sur {{isUpdate?'Modifier le menu' : 'Créer le menu'}}, je déclare avoir lu et accepter les <a class="my-form-instruction-link">Conditions d'utilisation</a> et la <a class="my-form-instruction-link">Politique de confidentialité.</a>
+                </div>
+                <div class="my-form-btn-wrap">
+                  <button type="submit" class="my-form-btn" [disabled]="onLoading" (click)="signupForm.ngSubmit.emit()">
+                    <span>{{isUpdate?'Modifier le menu' : 'Créer le menu'}}</span>
+                    <div class="loader" *ngIf="onLoading">
+                      <div class="ball-clip-rotate">
+                          <div></div>
+                      </div>
+                  </div>
+                  </button>
+                </div>
+              </form>
+            </section>
+          </div>
+    </div>
+    <app-footer></app-footer>
+</div>
