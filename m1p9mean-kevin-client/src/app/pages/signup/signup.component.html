@@ -1,0 +1,46 @@
+<div class="form-container responsive">
+    <form class="form" (ngSubmit)="signup(signupForm)" #signupForm="ngForm">
+        <h1 class="form-title">S'inscrire</h1>
+        
+        <div class="form-group">
+            <div class="input-group">
+                <label class="label">Nom</label>
+                <input type="text" name="lastname" ngModel required/>
+            </div>
+            <div class="input-group">
+                <label class="label">Prénom(s)</label>
+                <input type="text" name="firstname" ngModel required/>
+            </div>
+            <div class="input-group">
+                <label class="label">Date de naissance</label>
+                <input type="date" name="birthDate" ngModel required/>
+            </div>
+            <div class="input-group">
+                <label class="label">Profil</label>
+                <select name="profileId" ngModel required>
+                    <option *ngFor="let key of profileKeys" [value]="key">{{Profiles.map[key]}}</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label class="label">Nom d'utilisateur</label>
+                <input type="text" name="username" ngModel required/>
+            </div>
+            <div class="input-group">
+                <label class="label">Mot de passe</label>
+                <input type="password" name="password" ngModel required/>
+            </div>
+        </div>
+        <div class="form-btn-wrap">
+            <button class="form-btn {{onLoading?'disabled':''}}" type="submit">
+                <span>S'inscrire</span>
+                <div class="loader" *ngIf="onLoading">
+                    <div class="ball-clip-rotate">
+                        <div></div>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </form>
+</div>
+
+

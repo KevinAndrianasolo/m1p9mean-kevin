@@ -26,5 +26,15 @@
             max-width: 500px;
             text-align: center;
         }
+        .action-btn{
+            &.danger{
+                color : rgb(192, 23, 23);
+            }
+            &:hover{
+                font-style : italic;
+                cursor : pointer;
+            
+            }
+        }
     }
 }

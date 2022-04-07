@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Collections } from 'src/app/classes/Collections';
+import { ApiService } from 'src/app/services/api/api.service';
+import { PopupService } from 'src/app/services/popup/popup.service';
 
 @Component({
   selector: 'app-management',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagementComponent implements OnInit {
 
-  constructor() { }
+  public onLoading : boolean = false;
+  public restaurants : any [] = [];
+  constructor(private api : ApiService, private popupService : PopupService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.InitRestaurants();
+  }
+
+  public async InitRestaurants(){
+    try{
+      this.onLoading = true;
+      let res : any = await this.api.findAll(Collections.RESTAURANT).toPromise();
+      if(res['META']['status'] == "200"){
+        this.restaurants = res['DATA'];
+        console.log(this.restaurants);
+      }
+      else{
+        throw new Error(res['META']['message']);
+      }     
+    }
+    catch(err : any){
+      this.popupService.showError(err.message);
+    }
+    finally{
+      this.onLoading = false;
+    }
   }
 
 }

@@ -8,7 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { OrdersComponent } from './orders/orders.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
-import { SignupComponent } from './signup/signup.component';
+import { SignupComponent } from '../../pages/signup/signup.component';
 
 const routes: Routes = [
   {

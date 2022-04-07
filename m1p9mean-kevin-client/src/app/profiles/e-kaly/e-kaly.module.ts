@@ -12,6 +12,9 @@ import { FooterModule } from 'src/app/components/footer/footer.module';
 import { EKalyComponent } from './e-kaly.component';
 import { OrderComponent } from './order/order.component';
 import { FormsModule } from '@angular/forms';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { RestaurantFormComponent } from './restaurant-form/restaurant-form.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { FormsModule } from '@angular/forms';
     OrdersComponent,
     ProfitComponent,
     ManagementComponent,
-    OrderComponent
+    OrderComponent,
+    RestaurantComponent,
+    EmployeeFormComponent,
+    RestaurantFormComponent
   ],
   schemas : [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

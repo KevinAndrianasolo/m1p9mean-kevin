@@ -222,6 +222,10 @@
                     text-transform: uppercase;
                 }
             }
+            .basket-item-description{
+                max-height : 40px;
+                overflow: hidden;
+            }
         }
         
         .btn-wrap{
@@ -314,6 +318,13 @@
     td, th{
         border : 1px solid #777;
         padding : 10px 20px;
+    }
+    .delete-btn{
+        color : rgb(204, 19, 19);
+        &:hover{
+            font-style: italic;
+            cursor : pointer;
+        }
     }
 
 }

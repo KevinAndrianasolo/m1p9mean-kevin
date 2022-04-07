@@ -42,8 +42,9 @@ router.post('/:model/findOne', async function(req, res, next) {
     if(userTokenId){
       let userId = await AuthService.findUserIdWithUserTokenId(userTokenId);
       object['userId'] = userId;
+      console.log(object);
     } 
-
+    
     let tmp =  await ApiService.findOne(model, object);
     let response = ResponseBuilder.success(200, `Search result of ${model}`, tmp);
     res.send(response);

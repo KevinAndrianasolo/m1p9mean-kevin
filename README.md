@@ -71,6 +71,11 @@ ng generate component profiles/e-kaly/orders
 ng generate component profiles/e-kaly/order
 ng generate component profiles/e-kaly/profit
 ng generate component profiles/e-kaly/management
+ng generate component profiles/e-kaly/restaurant
+ng generate component profiles/e-kaly/employee-form
+ng generate component profiles/e-kaly/restaurant-form
+
+
 ### Components :
 ng generate component components/header
 ng generate module components/header

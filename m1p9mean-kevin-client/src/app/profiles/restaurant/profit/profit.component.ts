@@ -20,8 +20,11 @@ export class ProfitComponent implements OnInit {
 
   async ngOnInit() {
     this.restaurantId = this.storageService.getRestaurantId();
-    await this.InitRestaurant();
-    await this.InitProfits();
+    if(this.restaurantId){
+
+      await this.InitRestaurant();
+      await this.InitProfits();
+    }
   }
 
   public async getRestaurant(restaurantId : any){

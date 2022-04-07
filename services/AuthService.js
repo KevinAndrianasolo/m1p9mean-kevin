@@ -1,7 +1,7 @@
 let DBUtils = require('../utils/DBUtils');
 let ApiService = require('./ApiService');
-var ObjectId = require('mongodb').ObjectId; 
 const Collections = require("../classes/Collections");
+const { ObjectId } = require('mongodb');
 
 
 let check = async function(authObj){
@@ -10,7 +10,7 @@ let check = async function(authObj){
         let db = await DBUtils.connect();
         let collection = db.collection(Collections.USER);
         let user = await collection.findOne({
-            _id : userId,
+            _id : new ObjectId(userId),
             profileId : authObj.profileId
         });
     
@@ -22,7 +22,15 @@ let check = async function(authObj){
     }
     
 };
-
+let signup = async function(user){
+    let userId = await ApiService.save(Collections.USER, user);
+    let userTokenId = await saveUserToken(userId);
+    let profile = await ApiService.findById(Collections.PROFILE, user['profileId']);
+    return {
+        userTokenId : userTokenId,
+        profile : profile
+    };
+};
 let login = async function(user){
     let db = await DBUtils.connect();
     let collection = db.collection(Collections.USER);
@@ -34,7 +42,6 @@ let login = async function(user){
     if(res==null) throw new Error("Account does not exists.");
 
     let userTokenId = await saveUserToken(res['_id']);
-    console.log(userTokenId);
     let profile = await findProfileOfUser(res);
     return {
         userTokenId : userTokenId,
@@ -52,6 +59,7 @@ let findProfileOfUser = async function(user){
     return profile;
 };
 
+
 let saveUserToken = async function(userId){
     let res = await ApiService.save(Collections.USER_TOKEN, {
         userId : userId,
@@ -62,8 +70,11 @@ let saveUserToken = async function(userId){
 
 let findUserIdWithUserTokenId = async function(userTokenId){
     let res = await ApiService.findById(Collections.USER_TOKEN, userTokenId);
+    
     if(res==null) throw new Error("Invalid userToken.");
-    return ObjectId.valueOf(res['userId']);
+    //return ObjectId.valueOf(res['userId']);
+    return res['userId'].toString();
+
 };
 
 let findUserWithUserTokenId = async function(userTokenId){
@@ -85,5 +96,6 @@ module.exports.findUserWithUserTokenId = findUserWithUserTokenId;
 module.exports.findUserIdWithUserTokenId = findUserIdWithUserTokenId;
 module.exports.findProfileOf = findProfileOf;
 module.exports.check = check;
+module.exports.signup = signup;
 
 

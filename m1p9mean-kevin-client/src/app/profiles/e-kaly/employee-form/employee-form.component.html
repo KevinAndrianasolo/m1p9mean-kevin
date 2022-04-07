@@ -1,0 +1,43 @@
+<div class="page">
+    <app-header profile="e-kaly"></app-header>
+    <div class="content">
+        <h1 class="content-title">
+            <span>Formulaire Employé</span>
+            <div class="separator"></div>
+        </h1>
+
+        <div class="my-form card">
+            <section class="my-form-section">
+              <h2 class="my-form-section-title">Informations</h2>
+              <form (ngSubmit)="formSubmit()" #employeeForm="ngForm">
+                <div class="my-form-input-group" lines="none">
+                  <label class="my-form-label">Restaurant :</label>
+                  <input type="text" class="my-form-input" value="{{restaurant.name}}" disabled>
+                </div>
+                <div class="my-form-input-group" lines="none">
+                  <label class="my-form-label">Employé :</label>
+                  <select name="userId" [(ngModel)]="form.userId" required>
+                    <option *ngFor="let manager of managers" [value]="manager._id">{{manager._id}}: {{manager.lastname ? manager.lastname:'-'}} {{manager.firstname? manager.firstname:'-'}}</option>
+                </select>
+                </div>
+                
+                <div class="my-form-instruction my-form-confidentiality">
+                  
+                  En cliquant sur Ajouter l'employé, je déclare avoir lu et accepter les <a class="my-form-instruction-link">Conditions d'utilisation</a> et la <a class="my-form-instruction-link">Politique de confidentialité.</a>
+                </div>
+                <div class="my-form-btn-wrap">
+                  <button type="submit" class="my-form-btn" [disabled]="onLoading" (click)="employeeForm.ngSubmit.emit()">
+                    <span>Ajouter l'employé</span>
+                    <div class="loader" *ngIf="onLoading">
+                      <div class="ball-clip-rotate">
+                          <div></div>
+                      </div>
+                  </div>
+                  </button>
+                </div>
+              </form>
+            </section>
+          </div>
+    </div>
+    <app-footer></app-footer>
+</div>

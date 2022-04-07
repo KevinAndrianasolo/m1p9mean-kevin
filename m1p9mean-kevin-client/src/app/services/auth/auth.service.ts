@@ -20,6 +20,11 @@ export class AuthService {
     let url = `${this.baseService._base_url}/auth/login`;
     return this.http.post(url, user, { headers : headers } );
   }
+  public signup(user : any){
+    let headers = this.baseService.getHeaderInstance()
+    let url = `${this.baseService._base_url}/auth/signup`;
+    return this.http.post(url, user, { headers : headers } );
+  }
   public checkAuth(userTokenId : string, profileId : string){
     let headers = this.baseService.getHeaderInstance()
     let url = `${this.baseService._base_url}/auth/check`;

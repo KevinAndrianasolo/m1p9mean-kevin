@@ -1,0 +1,46 @@
+
+<div class="page">
+    <app-header profile="e-kaly"></app-header>
+    <div class="content">
+        <h1 class="content-title">
+            <span>{{restaurant.name}}</span>
+            <span class="small">{{restaurant.description}}</span>
+            <span class="small"><i class="fa-solid fa-map-pin icon mr-5"></i>{{restaurant.address}}</span>
+            <div class="small"><span class="action-btn" (click)="edit()">Modifier le restaurant</span> | <span class="action-btn danger" (click)="delete()">Supprimer le restaurant</span></div>
+
+
+            <div class="separator"></div>
+        </h1>
+        <div class="add-btn-wrap">
+            <div class="add-btn" routerLink="/e-kaly/employee-form/{{restaurantId}}">
+                Ajouter un nouvel employé à ce restaurant
+            </div>
+        </div>
+        <div class="my-alert" *ngIf="restaurantEmployees.length==0">
+            <div class="my-alert-text">E-Kaly</div>
+            <div class="my-alert-description">Aucun employé pour le restaurant {{restaurant.name}}</div>
+        </div>
+        <table class="my-table" *ngIf="restaurantEmployees.length!=0">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Nom d'utilisateur</th>
+                <th></th>
+
+            </tr>
+            <tr *ngFor="let employee of restaurantEmployees">
+                <td>{{employee._id}}</td>
+                <td>{{employee.user.lastname ? employee.user.lastname : '-'}}</td>
+                <td>{{employee.user.firstname ? employee.user.firstname : '-'}}</td>
+                <td>{{employee.user.birthDate | date}}</td>
+                <td>{{employee.user.username}}</td>
+                <td class="delete-btn" (click)="deleteEmployee(employee._id)">Supprimer</td>
+
+
+            </tr>
+        </table>
+    </div>
+    <app-footer></app-footer>
+</div>

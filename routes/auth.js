@@ -8,6 +8,7 @@ var ResponseBuilder = require(path.resolve(appDir, 'utils/ResponseBuilder'));
 router.post('/check', async function(req, res, next) {
   try{
     let authObj = req.body;
+    console.log(authObj);
     let tmp = await AuthService.check(authObj);
     let response = ResponseBuilder.success(200, `Authorization checked`, tmp);
     res.send(response);
@@ -17,7 +18,18 @@ router.post('/check', async function(req, res, next) {
   }
   
 });
-
+router.post('/signup', async function(req, res, next) {
+  try{
+    let user = req.body;
+    let tmp = await AuthService.signup(user);
+    let response = ResponseBuilder.success(200, `Signup successful`, tmp);
+    res.send(response);
+  }
+  catch(e){
+    res.send(ResponseBuilder.error(500, e.message));
+  }
+  
+});
 router.post('/login', async function(req, res, next) {
   try{
     let user = req.body;
