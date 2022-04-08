@@ -1,10 +1,14 @@
 # m1p9mean-kevin
 Heroku URL : https://m1p9mean-kevin.herokuapp.com/
+Mail : m1p9mean.kevin@gmail.com
+Mdp : kevinM1P9
+
 
 ## Setup environnment :
 npm install express-generator –g
 npm install -g nodemon
 npm install cors
+npm install nodemailer
 
 ## Setup Back-end : Node JS
 express m1p9mean-kevin
@@ -39,6 +43,8 @@ ng generate module profiles/client/orders
 
 ng generate component profiles/client/restaurant
 ng generate component profiles/client/menu
+ng generate component profiles/client/contact-us
+
 
 ### Restaurant profile :
 ng generate component profiles/restaurant
@@ -96,6 +102,8 @@ ng generate service services/menu/menu
 ng generate service services/order/order
 ng generate service services/api/api
 ng generate service services/profit/profit
+ng generate service services/mail/mail
+
 
 
 

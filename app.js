@@ -10,6 +10,8 @@ var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api');
 var profitRouter = require('./routes/profit');
 var authRouter = require('./routes/auth');
+var mailRouter = require('./routes/mail');
+
 
 // Middleware
 var AuthMiddleware = require('./middleware/AuthMiddleware');
@@ -36,6 +38,8 @@ app.use('/users', usersRouter);
 app.use('/api/reflect', apiRouter);
 app.use('/api/profit', profitRouter);
 app.use('/auth', authRouter);
+app.use('/mail', mailRouter);
+
 
 
 

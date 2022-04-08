@@ -3,6 +3,8 @@
     <div class="header-item" (click)="goTo('/client/restaurants')">Restaurants</div>
     <div class="header-item" (click)="goTo('/client/basket')">Mon panier</div>
     <div class="header-item" (click)="goTo('/client/orders')">Mes commandes</div>
+    <div class="header-item" (click)="goTo('/client/contact-us')">Contactez-nous</div>
+
     <div class="header-item danger" (click)="logout()">Se déconnecter</div>
 </div>
 <div class="header" *ngIf="profile=='restaurant'">

@@ -1,0 +1,46 @@
+
+<div class="page">
+    <app-header profile="client"></app-header>
+    <div class="content">
+        <h1 class="content-title">
+            <span>Contactez-nous</span>
+            <div class="separator"></div>
+        </h1>
+        <div class="my-form card">
+            <section class="my-form-section">
+              <h2 class="my-form-section-title">Mail</h2>
+              <form (ngSubmit)="formSubmit()" #contactForm="ngForm">
+                <div class="my-form-input-group" lines="none">
+                  <label class="my-form-label">Destinataire :</label>
+                  <input type="text" class="my-form-input" [(ngModel)]="form.recipient" name="recipient" disabled>
+                </div>
+                <div class="my-form-input-group" lines="none">
+                    <label class="my-form-label">Objet du mail :</label>
+                    <input type="text" class="my-form-input" [(ngModel)]="form.subject" name="subject">
+                  </div>
+                  <div class="my-form-input-group" lines="none">
+                    <label class="my-form-label">Contenu :</label>
+                    <textarea class="my-form-input" [(ngModel)]="form.text" name="text"></textarea>
+                  </div>
+               
+                
+                <div class="my-form-instruction my-form-confidentiality">
+                  
+                  En cliquant sur Envoyer le mail, je déclare avoir lu et accepter les <a class="my-form-instruction-link">Conditions d'utilisation</a> et la <a class="my-form-instruction-link">Politique de confidentialité.</a>
+                </div>
+                <div class="my-form-btn-wrap">
+                  <button type="submit" class="my-form-btn" [disabled]="onLoading" (click)="contactForm.ngSubmit.emit()">
+                    <span>Envoyer le mail</span>
+                    <div class="loader" *ngIf="onLoading">
+                      <div class="ball-clip-rotate">
+                          <div></div>
+                      </div>
+                  </div>
+                  </button>
+                </div>
+              </form>
+            </section>
+          </div>
+    </div>
+    <app-footer></app-footer>
+</div>

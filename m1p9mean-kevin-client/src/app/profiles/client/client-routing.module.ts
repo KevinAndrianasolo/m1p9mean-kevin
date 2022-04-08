@@ -9,6 +9,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { SignupComponent } from '../../pages/signup/signup.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,11 @@ const routes: Routes = [
       {
         path: "menu/:menuId",
         component: MenuComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: "contact-us",
+        component: ContactUsComponent,
         canActivate: [AuthGuardService]
       },
       {

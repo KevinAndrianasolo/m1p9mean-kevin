@@ -17,6 +17,7 @@ import { ClientComponent } from './client.component';
 import { BasketComponent } from './basket/basket.component';
 import { OrdersComponent } from './orders/orders.component';
 import { FormsModule } from '@angular/forms';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     RestaurantComponent,
     MenuComponent,
     BasketComponent,
-    OrdersComponent
+    OrdersComponent,
+    ContactUsComponent
   ],
   schemas : [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
