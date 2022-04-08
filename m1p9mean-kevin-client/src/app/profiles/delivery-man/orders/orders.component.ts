@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Collections } from 'src/app/classes/Collections';
 import { OrderState } from 'src/app/classes/OrderState';
 import { ApiService } from 'src/app/services/api/api.service';
@@ -13,7 +14,9 @@ export class OrdersComponent implements OnInit {
   public OrderState : any = OrderState;
   public onLoading : boolean = false;
   public orders : any [] = [];
-  constructor(private api : ApiService, private popupService : PopupService) { }
+  constructor(private api : ApiService, private popupService : PopupService, private router : Router) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   async ngOnInit() {
     await this.InitOrders();

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Collections } from 'src/app/classes/Collections';
 import { OrderState } from 'src/app/classes/OrderState';
 import { ApiService } from 'src/app/services/api/api.service';
@@ -19,7 +20,9 @@ export class OrdersComponent implements OnInit {
   public orderStateFilter : any = "";
   public orderStateKeys : any = Object.keys(OrderState.map);
   public restaurantId : any = null;
-  constructor(private api : ApiService, private popupService : PopupService, private storageService : StorageService) { }
+  constructor(private api : ApiService, private popupService : PopupService, private storageService : StorageService, private router : Router) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   async ngOnInit() {
     this.restaurantId = this.storageService.getRestaurantId();

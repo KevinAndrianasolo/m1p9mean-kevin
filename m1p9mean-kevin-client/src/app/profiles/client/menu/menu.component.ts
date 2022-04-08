@@ -17,7 +17,9 @@ export class MenuComponent implements OnInit {
   public quantity : number = 0;
   public isUpdate : boolean = false;
   public iItem : number = -1;
-  constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute, private basketService : BasketService, private router : Router) { }
+  constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute, private basketService : BasketService, private router : Router) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   async ngOnInit() {
     this.menuId = this.activatedRoute.snapshot.params['menuId'];

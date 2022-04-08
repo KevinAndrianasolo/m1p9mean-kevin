@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Collections } from 'src/app/classes/Collections';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PopupService } from 'src/app/services/popup/popup.service';
@@ -14,7 +15,9 @@ export class ProfitComponent implements OnInit {
   public profits : any[] = [];
   public restaurants : any[] = [];
   public restaurantMap : any = {};
-  constructor(private popupService : PopupService, private profitService : ProfitService, private api : ApiService) { }
+  constructor(private popupService : PopupService, private profitService : ProfitService, private api : ApiService, private router : Router) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   async ngOnInit() {
     

@@ -15,7 +15,9 @@ export class BasketComponent implements OnInit {
   public basket : any []= [];
   public onLoading : boolean = false;
   public basketItems : any[] =[];
-  constructor(private api : ApiService, private storageService : StorageService, private popupService : PopupService, private router : Router) { }
+  constructor(private api : ApiService, private storageService : StorageService, private popupService : PopupService, private router : Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
 
   ngOnInit(): void {
     this.basket = this.storageService.getBasket();

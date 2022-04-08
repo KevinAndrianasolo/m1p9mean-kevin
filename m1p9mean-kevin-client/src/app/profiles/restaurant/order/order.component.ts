@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Collections } from 'src/app/classes/Collections';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PopupService } from 'src/app/services/popup/popup.service';
@@ -15,7 +15,9 @@ export class OrderComponent implements OnInit {
   public onLoading : boolean = false;
   public order : any  =  {};
   public orderId : number = -1;
-  constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute) { }
+  constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute, private router : Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
 
   async ngOnInit() {
     this.orderId = this.activatedRoute.snapshot.params['orderId'];

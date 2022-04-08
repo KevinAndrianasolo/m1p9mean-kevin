@@ -15,7 +15,9 @@ export class RestaurantComponent implements OnInit {
   public restaurant : any  =  {};
   public restaurantId : number = -1;
   public restaurantEmployees : any[] = [];
-  constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute, private router : Router) { }
+  constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute, private router : Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
 
   async ngOnInit() {
     this.restaurantId = this.activatedRoute.snapshot.params['restaurantId'];

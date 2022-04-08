@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Collections } from 'src/app/classes/Collections';
 import { ApiService } from 'src/app/services/api/api.service';
 import { PopupService } from 'src/app/services/popup/popup.service';
@@ -16,7 +16,9 @@ export class RestaurantComponent implements OnInit {
   public restaurantId : number = -1;
   public menus : any [] = [];
   public toSearch : string = "";
-  constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute) { }
+  constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute, private router : Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
 
   async ngOnInit() {
     this.restaurantId = this.activatedRoute.snapshot.params['restaurantId'];

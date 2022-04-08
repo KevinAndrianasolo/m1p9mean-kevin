@@ -16,7 +16,9 @@ export class ManagementComponent implements OnInit {
   public onLoading : boolean = false;
   public query : any =  {};
   public visibility : any = "";
-  constructor(private api : ApiService, private popupService : PopupService, private storageService : StorageService, private router : Router) { }
+  constructor(private api : ApiService, private popupService : PopupService, private storageService : StorageService, private router : Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+   }
 
   async ngOnInit(){
     this.restaurantId = this.storageService.getRestaurantId();

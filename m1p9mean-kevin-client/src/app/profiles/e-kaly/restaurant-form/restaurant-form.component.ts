@@ -17,7 +17,9 @@ export class RestaurantFormComponent implements OnInit {
   public isUpdate : boolean = false;
 
   public restaurantId : any = null;
-  constructor(private popupService : PopupService, private api : ApiService, private storageService : StorageService, private router : Router, private activatedRoute : ActivatedRoute) { }
+  constructor(private popupService : PopupService, private api : ApiService, private storageService : StorageService, private router : Router, private activatedRoute : ActivatedRoute) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   async ngOnInit() {
     this.restaurantId = this.storageService.getRestaurantId();

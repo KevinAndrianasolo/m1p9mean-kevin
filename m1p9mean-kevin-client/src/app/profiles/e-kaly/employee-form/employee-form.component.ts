@@ -19,7 +19,9 @@ export class EmployeeFormComponent implements OnInit {
   public restaurant : any = {};
   public managers : any[] = [];
   public restaurantId : number = -1;
-  constructor(private popupService : PopupService, private api : ApiService, private storageService : StorageService, private router : Router, private activatedRoute : ActivatedRoute) { }
+  constructor(private popupService : PopupService, private api : ApiService, private storageService : StorageService, private router : Router, private activatedRoute : ActivatedRoute) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   async ngOnInit() {
     this.restaurantId = this.activatedRoute.snapshot.params['restaurantId'];
