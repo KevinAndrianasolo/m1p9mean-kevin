@@ -15,6 +15,7 @@ export class RestaurantComponent implements OnInit {
   public restaurant : any  =  {};
   public restaurantId : number = -1;
   public menus : any [] = [];
+  public toSearch : string = "";
   constructor(private api : ApiService, private popupService : PopupService, private activatedRoute : ActivatedRoute) { }
 
   async ngOnInit() {
@@ -22,7 +23,25 @@ export class RestaurantComponent implements OnInit {
     await this.InitRestaurant();
     await this.InitMenus();
   }
-
+  public async search(){
+    try{
+      this.onLoading = true;
+      let res : any = await this.api.find(Collections.MENU, {restaurantId : this.restaurantId, name:{ $regex: this.toSearch, $options: 'i' }}).toPromise();
+      if(res['META']['status'] == "200"){
+        this.menus = res['DATA'];
+        console.log(this.menus);
+      }
+      else{
+        throw new Error(res['META']['message']);
+      }     
+    }
+    catch(err : any){
+      this.popupService.showError(err.message);
+    }
+    finally{
+      this.onLoading = false;
+    }
+  }
   public async InitRestaurant(){
     try{
       this.onLoading = true;

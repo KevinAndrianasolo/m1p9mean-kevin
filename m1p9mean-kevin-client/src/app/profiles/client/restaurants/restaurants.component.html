@@ -7,6 +7,15 @@
             <span class="small">E-Kaly  vous présente la liste de leurs restaurants</span>
             <div class="separator"></div>
         </h1>
+        <div class="searchbar-wrap">
+            <div class="searchbar">
+                <input type="text" [(ngModel)]="toSearch" placeholder="Recherchez un restaurant ... "/>
+                <div class="icon-wrap" (click)="search()">
+                    <i class="fa fa-search"></i>
+                </div>
+            </div>
+        </div>
+        
         <div class="my-alert" *ngIf="restaurants.length==0">
             <div class="my-alert-text">E-Kaly</div>
             <div class="my-alert-description">Aucun restaurant disponible.</div>

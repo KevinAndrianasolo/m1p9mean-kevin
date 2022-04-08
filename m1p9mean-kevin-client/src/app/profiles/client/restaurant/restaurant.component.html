@@ -8,6 +8,14 @@
             <span class="small"><i class="fa-solid fa-map-pin icon mr-5"></i>{{restaurant.address}}</span>
             <div class="separator"></div>
         </h1>
+        <div class="searchbar-wrap">
+            <div class="searchbar">
+                <input type="text" [(ngModel)]="toSearch" placeholder="Recherchez un menu ... "/>
+                <div class="icon-wrap" (click)="search()">
+                    <i class="fa fa-search"></i>
+                </div>
+            </div>
+        </div>
         <div class="my-alert" *ngIf="menus.length==0">
             <div class="my-alert-text">E-Kaly</div>
             <div class="my-alert-description">Aucun menu disponible pour le restaurant {{restaurant.name}}</div>
