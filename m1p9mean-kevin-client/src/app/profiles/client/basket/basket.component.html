@@ -5,13 +5,13 @@
             <span>Mon panier</span>
             <div class="separator"></div>
         </h1>
-        <div class="my-alert" *ngIf="basket.length==0">
+        <div class="my-alert" *ngIf="basketItems.length==0">
             <div class="my-alert-text">Panier vide</div>
             <div class="my-alert-description">Veuillez ajouter des éléments à votre panier.</div>
         </div>
-        <div *ngIf="basket.length!=0">
+        <div *ngIf="basketItems.length!=0">
             <div class="basket-items">
-                <div class="basket-item" *ngFor="let basketItem of basketItems">
+                <div class="basket-item draggable" *ngFor="let basketItem of basketItems" draggable="true" (dragstart)="onDragStart($event, basketItem)" (dragend)="onDragEnd($event)">
                     <div class="basket-item-title">{{basketItem.menu.name}}</div>
                     <div class="basket-item-infos">
                         <div class="basket-item-description"><span class="key">Prix unitaire : </span><span class="value">{{basketItem.menu.unitPrice| currency : 'EUR'}}</span></div>
@@ -24,11 +24,18 @@
                             Modifier
                         </div>
                     </div>
+                    
                 </div>
             </div>
     
             <div class="btn-wrap">
                 <div class="btn" (click)="saveOrders()">Commander</div>
+            </div>
+            
+        </div>
+        <div class="btn-wrap fab">
+            <div class="btn" (dragover)="onDragOver($event)"  (dragleave)="onDragLeave($event)" (drop)="handleDrop($event)">
+                <i class="fa fa-trash"></i> Corbeille
             </div>
         </div>
         
