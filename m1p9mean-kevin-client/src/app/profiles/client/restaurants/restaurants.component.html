@@ -15,12 +15,19 @@
                 </div>
             </div>
         </div>
+        <div class="loader-wrap" *ngIf="onLoading">
+            <div class="loader lg">
+                <div class="ball-clip-rotate">
+                    <div></div>
+                </div>
+            </div>
+        </div>
         
-        <div class="my-alert" *ngIf="restaurants.length==0">
+        <div class="my-alert" *ngIf="!onLoading && restaurants.length==0">
             <div class="my-alert-text">E-Kaly</div>
             <div class="my-alert-description">Aucun restaurant disponible.</div>
         </div>
-        <div class="my-cards restaurants" *ngIf="restaurants.length!=0">
+        <div class="my-cards restaurants" *ngIf="!onLoading && restaurants.length!=0">
             <div class="my-card" *ngFor="let restaurant of restaurants" routerLink="/client/restaurant/{{restaurant._id}}">
                 <div class="my-card-image-wrap">
                     <img class="my-card-image" src="assets/img/restaurant-1.jpeg" alt="Image"/>

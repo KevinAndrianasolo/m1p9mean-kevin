@@ -5,11 +5,18 @@
             <span>Bénéfices de mon restaurant</span>
             <div class="separator"></div>
         </h1>
-        <div class="my-alert" *ngIf="profits.length==0">
+        <div class="loader-wrap" *ngIf="onLoading">
+            <div class="loader lg">
+                <div class="ball-clip-rotate">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="my-alert" *ngIf="!onLoading && profits.length==0">
             <div class="my-alert-text">E-Kaly</div>
             <div class="my-alert-description">Aucun bénéfice enregistré.</div>
         </div>
-        <table class="my-table" *ngIf="profits.length!=0">
+        <table class="my-table" *ngIf="!onLoading && profits.length!=0">
             <tr>
                 <th>Date</th>
                 <th>Restaurant</th>

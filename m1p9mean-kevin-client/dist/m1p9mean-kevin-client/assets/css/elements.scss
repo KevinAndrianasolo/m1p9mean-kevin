@@ -278,6 +278,10 @@
     --width : 15px;
     --height : 15px;
     --color : var(--black);
+    &.lg{
+        --width : 35px;
+        --height : 35px;
+    }
     .ball-clip-rotate{
         width: var(--width);
         height: var(--height);
@@ -296,6 +300,13 @@
         -webkit-animation: rotate 0.75s 0s linear infinite;
                 animation: rotate 0.75s 0s linear infinite; 
     }
+}
+.loader-wrap{
+    width : 100%;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    padding : 25px;
 }
 .filter-wrap{
     width : 100%;

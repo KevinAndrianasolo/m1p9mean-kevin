@@ -16,11 +16,18 @@
                 Ajouter un nouvel employé à ce restaurant
             </div>
         </div>
-        <div class="my-alert" *ngIf="restaurantEmployees.length==0">
+        <div class="loader-wrap" *ngIf="onLoading">
+            <div class="loader lg">
+                <div class="ball-clip-rotate">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="my-alert" *ngIf="!onLoading && restaurantEmployees.length==0">
             <div class="my-alert-text">E-Kaly</div>
             <div class="my-alert-description">Aucun employé pour le restaurant {{restaurant.name}}</div>
         </div>
-        <table class="my-table" *ngIf="restaurantEmployees.length!=0">
+        <table class="my-table" *ngIf="!onLoading && restaurantEmployees.length!=0">
             <tr>
                 <th>Id</th>
                 <th>Nom</th>

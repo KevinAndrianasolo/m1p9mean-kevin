@@ -141,6 +141,18 @@
             font-size : 40px;
             font-weight: bolder;
         }
+        .link-wrap{
+            font-size : 10px;
+                font-style: italic;
+                font-weight : normal;
+            .link{
+                
+                &:hover{
+                    color : var(--theme);
+                    cursor : pointer;
+                }
+            }
+        }
         .form-group{
             margin-bottom: 20px;
             .input-group{

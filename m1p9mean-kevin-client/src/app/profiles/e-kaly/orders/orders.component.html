@@ -11,11 +11,18 @@
                 <option  class="select-options" *ngFor="let key of orderStateKeys" [value]="key">{{OrderState.map[key]}}</option>
             </select>
         </div>
-        <div class="my-alert" *ngIf="orders.length==0">
+        <div class="loader-wrap" *ngIf="onLoading">
+            <div class="loader lg">
+                <div class="ball-clip-rotate">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="my-alert" *ngIf="!onLoading && orders.length==0">
             <div class="my-alert-text">E-Kaly</div>
             <div class="my-alert-description">Aucune commande en cours.</div>
         </div>
-        <div *ngIf="orders.length!=0">
+        <div *ngIf="!onLoading && orders.length!=0">
             <div class="basket-items">
                 <div class="basket-item" *ngFor="let order of orders">
                     <div class="basket-item-title">{{order.restaurant.name}}</div>

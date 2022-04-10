@@ -5,11 +5,18 @@
             <span>Mon panier</span>
             <div class="separator"></div>
         </h1>
-        <div class="my-alert" *ngIf="basketItems.length==0">
+        <div class="loader-wrap" *ngIf="onLoading">
+            <div class="loader lg">
+                <div class="ball-clip-rotate">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="my-alert" *ngIf="!onLoading && basketItems.length==0">
             <div class="my-alert-text">Panier vide</div>
             <div class="my-alert-description">Veuillez ajouter des éléments à votre panier.</div>
         </div>
-        <div *ngIf="basketItems.length!=0">
+        <div *ngIf="!onLoading && basketItems.length!=0">
             <div class="basket-items">
                 <div class="basket-item draggable" *ngFor="let basketItem of basketItems" draggable="true" (dragstart)="onDragStart($event, basketItem)" (dragend)="onDragEnd($event)">
                     <div class="basket-item-title">{{basketItem.menu.name}}</div>

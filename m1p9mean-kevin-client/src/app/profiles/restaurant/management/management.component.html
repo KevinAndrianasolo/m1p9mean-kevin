@@ -19,13 +19,19 @@
             </select>
         </div>
        
-       
-        <div class="my-alert" *ngIf="menus.length==0">
+        <div class="loader-wrap" *ngIf="onLoading">
+            <div class="loader lg">
+                <div class="ball-clip-rotate">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="my-alert" *ngIf="!onLoading && menus.length==0">
             <div class="my-alert-text">E-Kaly</div>
             <div class="my-alert-description">Aucun menu disponible.</div>
         </div>
         
-        <div *ngIf="menus.length!=0">
+        <div *ngIf="!onLoading && menus.length!=0">
             <div class="basket-items">
                 <div class="basket-item" *ngFor="let menu of menus; let iMenu = index">
                     <div class="basket-item-title " >

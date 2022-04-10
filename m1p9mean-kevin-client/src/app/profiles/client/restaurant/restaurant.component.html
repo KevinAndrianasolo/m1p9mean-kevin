@@ -16,11 +16,18 @@
                 </div>
             </div>
         </div>
-        <div class="my-alert" *ngIf="menus.length==0">
+        <div class="loader-wrap" *ngIf="onLoading">
+            <div class="loader lg">
+                <div class="ball-clip-rotate">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="my-alert" *ngIf="!onLoading && menus.length==0">
             <div class="my-alert-text">E-Kaly</div>
             <div class="my-alert-description">Aucun menu disponible pour le restaurant {{restaurant.name}}</div>
         </div>
-        <div class="my-cards menus" *ngIf="menus.length!=0">
+        <div class="my-cards menus" *ngIf="!onLoading && menus.length!=0">
             <div class="my-card" *ngFor="let menu of menus" routerLink="/client/menu/{{menu._id}}">
                 <div *ngIf="menu.isVisible">
                     <div class="my-card-image-wrap">

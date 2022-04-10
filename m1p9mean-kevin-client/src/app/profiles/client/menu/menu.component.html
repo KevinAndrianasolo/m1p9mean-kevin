@@ -6,22 +6,32 @@
             <span class="small">{{menu.description}}</span>
             <div class="separator"></div>
         </h1>
-        <div class="order-control-wrap">
-            <div class="order-control-btn" (click)="decreaseQuantity()">
-                <i class="fa fa-minus icon icon"></i>
+        <div class="loader-wrap" *ngIf="onLoading">
+            <div class="loader lg">
+                <div class="ball-clip-rotate">
+                    <div></div>
+                </div>
             </div>
-            <div class="order-control-value">
-              <span>{{quantity}}</span>
-            </div>
-            <div class="order-control-btn" (click)="increaseQuantity()">
-                <i class="fa fa-add icon icon"></i>
-            </div>
-          </div>
-        <div class="btn-wrap">
-            <div *ngIf="!isUpdate || quantity!=0" class="btn {{quantity==0 ? 'disabled' : ''}}" (click)="addToBasket()">{{isUpdate?'Modifier le panier':'Ajouter au panier'}}</div>
-            <div *ngIf="isUpdate && quantity==0" class="btn danger" (click)="deleteFromBasket()">Supprimer du panier</div>
-    
         </div>
+        <div *ngIf="!onLoading">
+            <div class="order-control-wrap" >
+                <div class="order-control-btn" (click)="decreaseQuantity()">
+                    <i class="fa fa-minus icon icon"></i>
+                </div>
+                <div class="order-control-value">
+                  <span>{{quantity}}</span>
+                </div>
+                <div class="order-control-btn" (click)="increaseQuantity()">
+                    <i class="fa fa-add icon icon"></i>
+                </div>
+              </div>
+            <div class="btn-wrap">
+                <div *ngIf="!isUpdate || quantity!=0" class="btn {{quantity==0 ? 'disabled' : ''}}" (click)="addToBasket()">{{isUpdate?'Modifier le panier':'Ajouter au panier'}}</div>
+                <div *ngIf="isUpdate && quantity==0" class="btn danger" (click)="deleteFromBasket()">Supprimer du panier</div>
+        
+            </div>
+        </div>
+        
     </div>
     <app-footer></app-footer>
 </div>
