@@ -17,7 +17,7 @@
                 <div class="my-form-input-group" lines="none">
                   <label class="my-form-label">Employé :</label>
                   <select name="userId" [(ngModel)]="form.userId" required>
-                    <option *ngFor="let manager of managers" [value]="manager._id">{{manager._id}}: {{manager.lastname ? manager.lastname:'-'}} {{manager.firstname? manager.firstname:'-'}}</option>
+                    <option *ngFor="let manager of disponibleManagers" [value]="manager._id">{{manager._id}}: {{manager.lastname ? manager.lastname:'-'}} {{manager.firstname? manager.firstname:'-'}}</option>
                 </select>
                 </div>
                 

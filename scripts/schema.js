@@ -1,3 +1,6 @@
+// mongosh "mongodb+srv://cluster0.mlqtk.mongodb.net/m1p9mean-kevin" --apiVersion 1 --username kevin
+// Password : 2zt83wSFXTtQaYSg
+
 const { ObjectId } = require("mongodb");
 
 db.createCollection("profile");

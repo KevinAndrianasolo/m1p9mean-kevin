@@ -18,6 +18,8 @@ export class EmployeeFormComponent implements OnInit {
 
   public restaurant : any = {};
   public managers : any[] = [];
+  public restaurantEmployees : any[] = [];
+  public disponibleManagers : any[] = [];
   public restaurantId : number = -1;
   constructor(private popupService : PopupService, private api : ApiService, private storageService : StorageService, private router : Router, private activatedRoute : ActivatedRoute) { 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -25,8 +27,22 @@ export class EmployeeFormComponent implements OnInit {
 
   async ngOnInit() {
     this.restaurantId = this.activatedRoute.snapshot.params['restaurantId'];
+    await this.InitRestaurantEmployees();
     await this.InitRestaurant();
     await this.InitRestaurantManagers();
+    this.InitDisponibleManagers();
+  }
+  public hasAlreadyPost(user : any){
+    for(let j=0; j<this.restaurantEmployees.length; j++){
+      if(user._id == this.restaurantEmployees[j].userId) return true;
+    }
+    return false;
+  }
+  public InitDisponibleManagers(){
+    this.disponibleManagers = [];
+    for(let i=0; i<this.managers.length; i++){
+      if(!this.hasAlreadyPost(this.managers[i])) this.disponibleManagers.push(this.managers[i]);
+    }
   }
   public async InitRestaurant(){
     try{
@@ -35,6 +51,24 @@ export class EmployeeFormComponent implements OnInit {
       if(res['META']['status'] == "200"){
         this.restaurant = res['DATA'];
         console.log(this.restaurant);
+      }
+      else{
+        throw new Error(res['META']['message']);
+      }     
+    }
+    catch(err : any){
+      this.popupService.showError(err.message);
+    }
+    finally{
+      this.onLoading = false;
+    }
+  }
+  public async InitRestaurantEmployees(){
+    try{
+      this.onLoading = true;
+      let res : any = await this.api.findAll(Collections.RESTAURANT_EMPLOYEE).toPromise();
+      if(res['META']['status'] == "200"){
+        this.restaurantEmployees = res['DATA'];
       }
       else{
         throw new Error(res['META']['message']);
